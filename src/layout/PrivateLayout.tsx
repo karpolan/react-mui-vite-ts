@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { IS_DEBUG } from '@/config';
 import { LinkToPage } from '@/utils';
-import TopbarAndSidebarLayout from './TopbarAndSidebarLayout';
+import TopBarAndSideBarLayout from './TopBarAndSideBarLayout';
 
 const TITLE_PRIVATE = '_TITLE_'; // Title for pages after authentication
 
@@ -48,14 +48,14 @@ const PrivateLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   document.title = title; // Also Update Tab Title  // TODO: Do we need this? Move it to useEffect()?
 
   return (
-    <TopbarAndSidebarLayout
+    <TopBarAndSideBarLayout
       sidebarItems={SIDE_BAR_ITEMS}
       title={title}
       variant="sidebarPersistentOnDesktop"
     >
       {children}
       {/* <Stack component="footer">Copyright &copy; </Stack> */}
-    </TopbarAndSidebarLayout>
+    </TopBarAndSideBarLayout>
   );
 };
 

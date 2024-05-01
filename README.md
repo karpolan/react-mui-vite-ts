@@ -3,7 +3,7 @@
 Mix of [npm create vite](https://vitejs.dev/guide/) and [MUI](https://mui.com) with set of reusable components and utilities to build professional NextJS application faster.
 
 - [Source Code](https://github.com/karpolan/react-mui-vite-ts)
-- [Online Demo](https://react-mui-vite-ts.vercel.app)
+- [Online Demo](https://react-mui-vite-ts.netlify.app)
 
 ## How to use
 

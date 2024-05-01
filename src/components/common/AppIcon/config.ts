@@ -1,5 +1,5 @@
 // SVG assets
-import LogoIcon from './icons/LogoIcon';
+import LogoIcon from './icons/YellowPlanIcon';
 // MUI Icons
 import DefaultIcon from '@mui/icons-material/MoreHoriz';
 import SettingsIcon from '@mui/icons-material/Settings';
