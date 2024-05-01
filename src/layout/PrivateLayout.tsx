@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { IS_DEBUG } from '@/config';
 import { LinkToPage } from '@/utils';
-import TopBarAndSideBarLayout from './TopBarAndSideBarLayout2';
+import TopBarAndSideBarLayout from './TopBarAndSideBarLayout';
 
 const TITLE_PRIVATE = '_TITLE_'; // Title for pages after authentication
 
