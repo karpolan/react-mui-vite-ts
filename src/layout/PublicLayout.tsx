@@ -4,7 +4,7 @@ import { IS_DEBUG } from '@/config';
 import { LinkToPage } from '@/utils';
 import { useIsMobile } from '@/hooks';
 import { BottomBar } from './components';
-import TopbarAndSidebarLayout from './TopbarAndSidebarLayout';
+import TopBarAndSideBarLayout from './TopBarAndSideBarLayout';
 import { BOTTOM_BAR_DESKTOP_VISIBLE } from './config';
 
 // TODO: change to your app name or other word
@@ -72,7 +72,7 @@ const PublicLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   document.title = title; // Also Update Tab Title // TODO: Do we need this? Move it to useEffect()?
 
   return (
-    <TopbarAndSidebarLayout
+    <TopBarAndSideBarLayout
       sidebarItems={SIDE_BAR_ITEMS}
       title={title}
       variant="sidebarAlwaysTemporary"
@@ -81,7 +81,7 @@ const PublicLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
       <Stack component="footer">
         {bottomBarVisible && <BottomBar items={BOTTOM_BAR_ITEMS} />}
       </Stack>
-    </TopbarAndSidebarLayout>
+    </TopBarAndSideBarLayout>
   );
 };
 
