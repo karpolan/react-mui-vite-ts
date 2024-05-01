@@ -1,5 +1,4 @@
-import React from 'react';
-import { BrowserRouter, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { FunctionComponent } from 'react';
 import { render, screen } from '@testing-library/react';
 import AppLink, { AppLinkProps } from '.';

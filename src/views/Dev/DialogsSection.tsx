@@ -1,11 +1,11 @@
-import { ChangeEvent, useState, ReactNode, useCallback } from "react";
-import { Card, CardHeader, Grid, TextField } from "@mui/material";
-import { AppButton, AppIconButton } from "@/components";
+import { ChangeEvent, useState, ReactNode, useCallback } from 'react';
+import { Card, CardHeader, Grid, TextField } from '@mui/material';
+import { AppButton, AppIconButton } from '@/components';
 import {
   CommonDialog as MessageDialog,
   CommonDialog as ConfirmationDialog,
   CompositionDialog as EmailEditDialog,
-} from "@/components/dialogs";
+} from '@/components/dialogs';
 
 /**
  * Renders demo section for Dialogs
@@ -13,14 +13,14 @@ import {
 const DialogsSection = () => {
   const [modal, setModal] = useState<ReactNode | null>(null);
   const [openEmailDialog, setOpenEmailDialog] = useState(false);
-  const [email, setEmail] = useState("i@karpolan.com");
+  const [email, setEmail] = useState('i@karpolan.com');
 
   const onDialogClose = useCallback(() => {
     setModal(null);
   }, []);
 
   const onMessageDialogConfirm = useCallback((data: unknown) => {
-    console.info("onMessageDialogConfirm() - data:", data);
+    console.info('onMessageDialogConfirm() - data:', data);
     setModal(null);
   }, []);
 
@@ -32,32 +32,32 @@ const DialogsSection = () => {
         confirmButtonText="OK"
         data="Dialog Data can be object, string, number, boolean, etc. It is passed to onConfirm callback"
         title="Simple Message"
-        text={`Use props.text to pass string message here. 
+        children={`Use props.text to pass string message here. 
 			         If you need to render JSX content inside the dialog use props.body. 
 			         Text and color of the "Confirm" button is customizable.
 					     The "Cancel" button can be hidden`}
         onClose={onDialogClose}
         onConfirm={onMessageDialogConfirm}
-      />,
+      />
     );
   };
 
   const onConfirmDialogConfirm = useCallback((data: unknown) => {
-    console.info("onConfirmDialogConfirm() - data:", data);
+    console.info('onConfirmDialogConfirm() - data:', data);
     setModal(null);
   }, []);
 
   const onConfirmDialogOpen = () => {
     const dialogData = {
       id: 123,
-      name: "Sample data for Confirm Dialog",
+      name: 'Sample data for Confirm Dialog',
     };
     setModal(
       <ConfirmationDialog
         open
         data={dialogData}
         title="Do you really want to do something?"
-        body={
+        children={
           <>
             <div>
               JSX content can be easily added into the dialog via props.body
@@ -118,16 +118,15 @@ const DialogsSection = () => {
             </div>
           </>
         }
-        text="!!! This text will not be rendered !!!"
         confirmButtonText="Confirm and do something"
         onClose={onDialogClose}
         onConfirm={onConfirmDialogConfirm}
-      />,
+      />
     );
   };
 
   const onEditEmailDialogClose = useCallback((data: unknown) => {
-    console.info("onEditEmailDialogClose() - data:", data);
+    console.info('onEditEmailDialogClose() - data:', data);
     setOpenEmailDialog(false);
   }, []);
 
@@ -147,7 +146,7 @@ const DialogsSection = () => {
           open
           title="Edit Email"
           onClose={onEditEmailDialogClose}
-          content={
+          children={
             <div>
               <TextField
                 variant="outlined"

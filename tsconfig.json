@@ -27,14 +27,13 @@
     },
 
     /* Type checking */
-    "types": [
-      "jest",
-      "node"
-      // "vite/client"
-      // "vitest/globals"
-    ]
+    "types": ["jest", "node"]
   },
-  "include": ["src", "./jest-setup.ts"],
+  "include": [
+    "src",
+    "./setup-tests.ts"
+    // "./jest-setup.ts" // We don't need it because it is included by jest.config.ts as .setupFilesAfterEnv property
+  ],
   "exclude": ["**/*.test.*", "**/*.spec.*"],
   "references": [
     {
