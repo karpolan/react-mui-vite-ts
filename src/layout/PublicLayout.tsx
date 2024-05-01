@@ -1,42 +1,42 @@
-import { FunctionComponent, PropsWithChildren } from "react";
-import { Stack } from "@mui/material";
-import { IS_DEBUG } from "@/config";
-import { LinkToPage } from "@/utils";
-import { useIsMobile } from "@/hooks";
-import { BottomBar } from "./components";
-import TopbarAndSidebarLayout from "./TopbarAndSidebarLayout";
-import { BOTTOM_BAR_DESKTOP_VISIBLE } from "./config";
+import { FunctionComponent, PropsWithChildren } from 'react';
+import { Stack } from '@mui/material';
+import { IS_DEBUG } from '@/config';
+import { LinkToPage } from '@/utils';
+import { useIsMobile } from '@/hooks';
+import { BottomBar } from './components';
+import TopbarAndSidebarLayout from './TopbarAndSidebarLayout';
+import { BOTTOM_BAR_DESKTOP_VISIBLE } from './config';
 
 // TODO: change to your app name or other word
-const TITLE_PUBLIC = "Unauthorized - Creator App"; // Title for pages without/before authentication
+const TITLE_PUBLIC = 'Unauthorized - _TITLE_'; // Title for pages without/before authentication
 
 /**
  * SideBar navigation items with links for Public Layout
  */
 const SIDE_BAR_ITEMS: Array<LinkToPage> = [
   {
-    title: "Log In",
-    path: "/auth/login",
-    icon: "login",
+    title: 'Log In',
+    path: '/auth/login',
+    icon: 'login',
   },
   {
-    title: "Sign Up",
-    path: "/auth/signup",
-    icon: "signup",
+    title: 'Sign Up',
+    path: '/auth/signup',
+    icon: 'signup',
   },
   {
-    title: "About",
-    path: "/about",
-    icon: "about",
+    title: 'About',
+    path: '/about',
+    icon: 'info',
   },
 ];
 
 // Add debug links
 IS_DEBUG &&
   SIDE_BAR_ITEMS.push({
-    title: "[Debug Tools]",
-    path: "/dev",
-    icon: "settings",
+    title: '[Debug Tools]',
+    path: '/dev',
+    icon: 'settings',
   });
 
 /**
@@ -44,19 +44,19 @@ IS_DEBUG &&
  */
 const BOTTOM_BAR_ITEMS: Array<LinkToPage> = [
   {
-    title: "Log In",
-    path: "/auth/login",
-    icon: "login",
+    title: 'Log In',
+    path: '/auth/login',
+    icon: 'login',
   },
   {
-    title: "Sign Up",
-    path: "/auth/signup",
-    icon: "signup",
+    title: 'Sign Up',
+    path: '/auth/signup',
+    icon: 'signup',
   },
   {
-    title: "About",
-    path: "/about",
-    icon: "about",
+    title: 'About',
+    path: '/about',
+    icon: 'info',
   },
 ];
 

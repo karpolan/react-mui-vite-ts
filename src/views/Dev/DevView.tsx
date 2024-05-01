@@ -5,10 +5,10 @@ import {
   Divider,
   Grid,
   Typography,
-} from "@mui/material";
-import { IS_DEBUG } from "@/config";
-import { AppButton, AppIconButton, AppLink, AppView } from "@/components";
-import DialogsSection from "./DialogsSection";
+} from '@mui/material';
+import { IS_DEBUG } from '@/config';
+import { AppButton, AppIconButton, AppLink, AppView } from '@/components';
+import DialogsSection from './DialogsSection';
 
 /**
  * Renders Development tools when env.REACT_APP_DEBUG is true
@@ -33,22 +33,22 @@ const DevView = () => {
         <Card>
           <CardHeader title="AppLink" />
           <CardContent>
-            <AppLink>MUI default</AppLink>{" "}
-            <AppLink color="inherit">MUI inherit</AppLink>{" "}
-            <AppLink color="primary">MUI primary</AppLink>{" "}
-            <AppLink color="secondary">MUI secondary</AppLink>{" "}
-            <AppLink color="textPrimary">MUI textPrimary</AppLink>{" "}
-            <AppLink color="textSecondary">MUI textSecondary</AppLink>{" "}
+            <AppLink>MUI default</AppLink>{' '}
+            <AppLink color="inherit">MUI inherit</AppLink>{' '}
+            <AppLink color="primary">MUI primary</AppLink>{' '}
+            <AppLink color="secondary">MUI secondary</AppLink>{' '}
+            <AppLink color="textPrimary">MUI textPrimary</AppLink>{' '}
+            <AppLink color="textSecondary">MUI textSecondary</AppLink>{' '}
             <AppLink color="error">MUI error</AppLink> <br />
             <AppLink to="/">Internal Link</AppLink> &nbsp;
             <AppLink to="/" openInNewTab>
               Internal Link in New Tab
-            </AppLink>{" "}
+            </AppLink>{' '}
             &nbsp;
             <AppLink href="//karpolan.com">External Link</AppLink> &nbsp;
             <AppLink href="//karpolan.com" openInNewTab={false}>
               External Link in Same Tab
-            </AppLink>{" "}
+            </AppLink>{' '}
             &nbsp;
             <br />
             <AppButton
