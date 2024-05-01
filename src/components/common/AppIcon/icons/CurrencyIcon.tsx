@@ -1,7 +1,7 @@
-import { FunctionComponent } from "react";
-import { IconProps } from "../utils";
+import { FunctionComponent } from 'react';
+import { IconProps } from '../utils';
 
-const LogoIcon: FunctionComponent<IconProps> = (props) => {
+const CurrencyIcon: FunctionComponent<IconProps> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -38,4 +38,4 @@ const LogoIcon: FunctionComponent<IconProps> = (props) => {
   );
 };
 
-export default LogoIcon;
+export default CurrencyIcon;
