@@ -5,8 +5,8 @@ import reactRefresh from 'eslint-plugin-react-refresh';
 // import typeScriptParser from '@typescript-eslint/parser';
 
 export default [
-  // eslint.configs.recommended,
-  // ...tsEslint.configs.recommended,
+  eslint.configs.recommended,
+  ...tsEslint.configs.recommended,
   {
     ...eslint.configs.recommended,
     ignores: ['**/*.test.*', '**/*.spec.*'],
