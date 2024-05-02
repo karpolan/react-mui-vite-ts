@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "react-mui-vite-ts",
-  "version": "0.1.7",
+  "version": "0.2.9",
   "description": "Starter project for Vite with React + MUI using TypeScript",
   "author": {
     "name": "Anton Karpenko",
@@ -12,7 +12,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "format": "prettier ./src --write",
-    "lint": "eslint ./src --ext .js,.ts,.tsx",
+    "lint": "eslint src/** --no-warn-ignored",
+    "lint:old": "eslint ./src --ext .js,.ts,.tsx",
     "lint:vite": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "start": "npm run dev",
@@ -39,10 +40,8 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@types/react-router-dom": "latest",
-    "@typescript-eslint/eslint-plugin": "latest",
     "@vitejs/plugin-react-swc": "latest",
-    "eslint": "8.56.0",
-    "eslint-plugin-react-hooks": "latest",
+    "eslint": "latest",
     "eslint-plugin-react-refresh": "latest",
     "jest": "latest",
     "jest-environment-jsdom": "latest",
@@ -52,6 +51,7 @@
     "ts-jest-mock-import-meta": "latest",
     "ts-node": "latest",
     "typescript": "^5",
+    "typescript-eslint": "latest",
     "vite": "^5",
     "vite-tsconfig-paths": "latest",
     "vitest": "latest"

@@ -1,10 +1,9 @@
-import { Avatar, Stack, Typography } from "@mui/material";
-import { AppLink } from "@/components";
+import { Avatar, Stack, Typography } from '@mui/material';
+import { AppLink } from '@/components';
 
 interface UserInfoProps {
   className?: string;
   showAvatar?: boolean;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   user?: any;
 }
 
@@ -21,7 +20,7 @@ const UserInfo = ({
 }: UserInfoProps) => {
   const fullName =
     user?.name ||
-    [user?.nameFirst || "", user?.nameLast || ""].join(" ").trim();
+    [user?.nameFirst || '', user?.nameLast || ''].join(' ').trim();
   const srcAvatar = user?.avatar ? user?.avatar : undefined;
   const userPhoneOrEmail = user?.phone || (user?.email as string);
 
@@ -38,18 +37,18 @@ const UserInfo = ({
             sx={{
               width: 64,
               height: 64,
-              fontSize: "3rem",
+              fontSize: '3rem',
             }}
-            alt={fullName || "User Avatar"}
+            alt={fullName || 'User Avatar'}
             src={srcAvatar}
           />
         </AppLink>
       ) : null}
       <Typography sx={{ mt: 1 }} variant="h6">
-        {fullName || "Current User"}
+        {fullName || 'Current User'}
       </Typography>
       <Typography variant="body2">
-        {userPhoneOrEmail || "Loading..."}
+        {userPhoneOrEmail || 'Loading...'}
       </Typography>
     </Stack>
   );
