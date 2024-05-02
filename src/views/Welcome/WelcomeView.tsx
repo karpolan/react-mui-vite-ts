@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
-import { AppLink, AppView } from "@/components";
+import { Typography } from '@mui/material';
+import { AppLink, AppView } from '@/components';
 
 /**
  * Renders "Welcome" view
@@ -13,8 +13,14 @@ const WelcomeView = () => {
 
       <div>This is Welcome page, put your content here....</div>
       <div>
-        Take a look on samples of components at{" "}
+        Take a look on samples of components at{' '}
         <AppLink to="/dev">Debug Page</AppLink>
+      </div>
+      <div>
+        The source code is available at{' '}
+        <AppLink href="https://github.com/karpolan/react-mui-vite-ts">
+          Git Hub
+        </AppLink>
       </div>
     </AppView>
   );
