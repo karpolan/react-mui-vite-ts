@@ -10,7 +10,7 @@ Inclides:
 
 - **Prettier** for code formatting
 - **Eslint** for error checking
-- **Vitest** (or **Jest**) with **Testing Library** for test components and hooks
+- **Vitest** (or **Jest**) with **Testing Library** for testing components and hooks
 - Set of common **components**, useful **hooks**, and essential **utilities**
 - State management using **Context API**
 - Different and customized **Public** and **Private** layouts
