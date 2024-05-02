@@ -1,9 +1,22 @@
 # Starter project for Vite with React + MUI using TypeScript
 
-Mix of [npm create vite](https://vitejs.dev/guide/) and [MUI](https://mui.com) with set of reusable components and utilities to build professional NextJS application faster.
+Mix of [npm create vite](https://vitejs.dev/guide/) and [MUI](https://mui.com) with set of reusable components
+and utilities to build professional React application faster.
 
 - [Source Code](https://github.com/karpolan/react-mui-vite-ts)
 - [Online Demo](https://react-mui-vite-ts.netlify.app)
+
+Inclides:
+
+- **Prettier** for code formatting
+- **Eslint** for error checking
+- **Vitest** (or **Jest**) with **Testing Library** for test components and hooks
+- Set of common **components**, useful **hooks**, and essential **utilities**
+- State management using **Context API**
+- Different and customized **Public** and **Private** layouts
+- Basic **authentication** hooks and events
+- **Dark** and **Light** mode with switch
+- FavIcon and Manifest for **PWA**
 
 ## How to use
 
