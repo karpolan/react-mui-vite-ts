@@ -1,12 +1,6 @@
-import { FunctionComponent, SyntheticEvent } from "react";
-import {
-  DialogTitle,
-  DialogTitleProps,
-  Typography,
-  Stack,
-  useTheme,
-} from "@mui/material";
-import { AppIconButton } from "@/components";
+import { FunctionComponent, SyntheticEvent } from 'react';
+import { DialogTitle, DialogTitleProps, Typography, Stack, useTheme } from '@mui/material';
+import { AppIconButton } from '@/components';
 
 interface Props extends DialogTitleProps {
   onClose?: (event: SyntheticEvent) => void;
@@ -16,20 +10,16 @@ interface Props extends DialogTitleProps {
  * Renders Material UI Dialog Title with optional (x) button to close the dialog
  * @param {function} [onClose] - when set the (x) button added to Dialog Title and event called on button click
  */
-const AppDialogTitle: FunctionComponent<Props> = ({
-  children,
-  onClose,
-  ...props
-}) => {
+const AppDialogTitle: FunctionComponent<Props> = ({ children, onClose, ...props }) => {
   const theme = useTheme();
   return (
     <DialogTitle {...props}>
       <Stack direction="row" maxWidth={`calc(100% - ${theme.spacing(4)})`}>
         <Typography
           sx={{
-            textOverflow: "ellipsis",
-            whiteSpace: "nowrap",
-            overflow: "hidden",
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
           }}
           variant="h6"
         >
@@ -44,7 +34,7 @@ const AppDialogTitle: FunctionComponent<Props> = ({
           aria-label="close"
           onClick={onClose}
           sx={{
-            position: "absolute",
+            position: 'absolute',
             right: theme.spacing(0.5),
             top: theme.spacing(0.5),
           }}

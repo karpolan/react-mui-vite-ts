@@ -1,4 +1,4 @@
-import { SVGAttributes } from "react";
+import { SVGAttributes } from 'react';
 
 /**
  * Props to use with custom SVG icons, similar to AppIcon's Props

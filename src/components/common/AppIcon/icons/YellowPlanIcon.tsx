@@ -8,24 +8,13 @@ const YellowPlaneIcon: FunctionComponent<IconProps> = (props) => {
   };
 
   return (
-    <svg
-      version="1.1"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 512 512"
-      xmlSpace="preserve"
-      {...props}
-    >
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlSpace="preserve" {...props}>
       <path
         style={{ fill: '#FFCE00' }}
         d="M142.21,493.991c12.991,12.991,34.057,12.991,47.05,0c12.991-12.991,12.991-34.057,0-47.048
 	L65.057,322.742c-12.993-12.992-34.059-12.992-47.05,0s-12.989,34.055,0,47.048L142.21,493.991z"
       />
-      <circle
-        style={{ fill: '#7D868C' }}
-        cx="386.857"
-        cy="125.141"
-        r="35.932"
-      />
+      <circle style={{ fill: '#7D868C' }} cx="386.857" cy="125.141" r="35.932" />
       <path
         style={styleOpacityAndEnableBackground}
         d="M391.846,120.154c-9.556-9.556-18.727-17.187-27.59-22.948

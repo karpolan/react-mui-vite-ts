@@ -1,6 +1,6 @@
-import { ComponentType, FunctionComponent, SVGAttributes } from "react";
-import { APP_ICON_SIZE } from "@/components/config";
-import { IconName, ICONS } from "./config";
+import { ComponentType, FunctionComponent, SVGAttributes } from 'react';
+import { APP_ICON_SIZE } from '@/components/config';
+import { IconName, ICONS } from './config';
 
 /**
  * Props of the AppIcon component, also can be used for SVG icons
@@ -22,12 +22,12 @@ export interface AppIconProps extends SVGAttributes<SVGElement> {
  */
 const AppIcon: FunctionComponent<AppIconProps> = ({
   color,
-  icon = "default",
+  icon = 'default',
   size = APP_ICON_SIZE,
   style,
   ...restOfProps
 }) => {
-  const iconName = (icon || "default").trim().toLowerCase() as IconName;
+  const iconName = (icon || 'default').trim().toLowerCase() as IconName;
 
   let ComponentToRender: ComponentType = ICONS[iconName];
   if (!ComponentToRender) {
@@ -38,7 +38,7 @@ const AppIcon: FunctionComponent<AppIconProps> = ({
   const propsToRender = {
     height: size,
     color,
-    fill: color && "currentColor",
+    fill: color && 'currentColor',
     size,
     style: { ...style, color },
     width: size,

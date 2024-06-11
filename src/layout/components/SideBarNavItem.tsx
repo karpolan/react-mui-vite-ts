@@ -1,8 +1,8 @@
-import { FunctionComponent, MouseEventHandler } from "react";
-import { useLocation } from "react-router";
-import { ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { AppIcon, AppLink } from "@/components";
-import { LinkToPage } from "@/utils";
+import { FunctionComponent, MouseEventHandler } from 'react';
+import { useLocation } from 'react-router';
+import { ListItemButton, ListItemIcon, ListItemText } from '@mui/material';
+import { AppIcon, AppLink } from '@/components';
+import { LinkToPage } from '@/utils';
 
 interface Props extends LinkToPage {
   openInNewTab?: boolean;
@@ -24,10 +24,7 @@ const SideBarNavItem: FunctionComponent<Props> = ({
   onClick,
 }) => {
   const location = useLocation();
-  const selected =
-    propSelected ||
-    (path && path.length > 1 && location.pathname.startsWith(path)) ||
-    false;
+  const selected = propSelected || (path && path.length > 1 && location.pathname.startsWith(path)) || false;
 
   return (
     <ListItemButton

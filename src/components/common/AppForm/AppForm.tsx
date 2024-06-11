@@ -1,5 +1,5 @@
-import { ReactNode, FormHTMLAttributes, FunctionComponent } from "react";
-import { Box, Grid } from "@mui/material";
+import { ReactNode, FormHTMLAttributes, FunctionComponent } from 'react';
+import { Box, Grid } from '@mui/material';
 
 interface Props extends FormHTMLAttributes<HTMLFormElement> {
   children: ReactNode;

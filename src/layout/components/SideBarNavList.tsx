@@ -1,7 +1,7 @@
-import { FunctionComponent, MouseEventHandler } from "react";
-import List from "@mui/material/List";
-import { LinkToPage } from "@/utils";
-import SideBarNavItem from "./SideBarNavItem";
+import { FunctionComponent, MouseEventHandler } from 'react';
+import List from '@mui/material/List';
+import { LinkToPage } from '@/utils';
+import SideBarNavItem from './SideBarNavItem';
 
 interface Props {
   items: Array<LinkToPage>;
@@ -16,12 +16,7 @@ interface Props {
  * @param {boolean} [showIcons] - icons in navigation items are visible when true
  * @param {function} [onAfterLinkClick] - optional callback called when some navigation item was clicked
  */
-const SideBarNavList: FunctionComponent<Props> = ({
-  items,
-  showIcons,
-  onClick,
-  ...restOfProps
-}) => {
+const SideBarNavList: FunctionComponent<Props> = ({ items, showIcons, onClick, ...restOfProps }) => {
   return (
     <List component="nav" {...restOfProps}>
       {items.map(({ icon, path, title }) => (

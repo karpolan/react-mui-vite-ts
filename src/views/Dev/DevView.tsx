@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  Divider,
-  Grid,
-  Typography,
-} from '@mui/material';
+import { Card, CardContent, CardHeader, Divider, Grid, Typography } from '@mui/material';
 import { IS_DEBUG } from '@/config';
 import { AppButton, AppIconButton, AppLink, AppView } from '@/components';
 import DialogsSection from './DialogsSection';
@@ -21,9 +14,7 @@ const DevView = () => {
   return (
     <AppView>
       <Typography variant="h1">Development Tools</Typography>
-      <Typography variant="h2">
-        Debug controls and components on this page...
-      </Typography>
+      <Typography variant="h2">Debug controls and components on this page...</Typography>
 
       <Grid item xs={12} md={3}>
         <DialogsSection />
@@ -33,13 +24,10 @@ const DevView = () => {
         <Card>
           <CardHeader title="AppLink" />
           <CardContent>
-            <AppLink>MUI default</AppLink>{' '}
-            <AppLink color="inherit">MUI inherit</AppLink>{' '}
-            <AppLink color="primary">MUI primary</AppLink>{' '}
-            <AppLink color="secondary">MUI secondary</AppLink>{' '}
+            <AppLink>MUI default</AppLink> <AppLink color="inherit">MUI inherit</AppLink>{' '}
+            <AppLink color="primary">MUI primary</AppLink> <AppLink color="secondary">MUI secondary</AppLink>{' '}
             <AppLink color="textPrimary">MUI textPrimary</AppLink>{' '}
-            <AppLink color="textSecondary">MUI textSecondary</AppLink>{' '}
-            <AppLink color="error">MUI error</AppLink> <br />
+            <AppLink color="textSecondary">MUI textSecondary</AppLink> <AppLink color="error">MUI error</AppLink> <br />
             <AppLink to="/">Internal Link</AppLink> &nbsp;
             <AppLink to="/" openInNewTab>
               Internal Link in New Tab
@@ -51,25 +39,9 @@ const DevView = () => {
             </AppLink>{' '}
             &nbsp;
             <br />
-            <AppButton
-              to="/"
-              sx={{ ml: 0 }}
-              size="small"
-              label="as Default Button"
-            />
-            <AppButton
-              to="/"
-              size="small"
-              color="primary"
-              label="as Primary Button"
-            />
-            <AppButton
-              to="/"
-              sx={{ mr: 0 }}
-              size="small"
-              color="secondary"
-              label="as Secondary Button"
-            />
+            <AppButton to="/" sx={{ ml: 0 }} size="small" label="as Default Button" />
+            <AppButton to="/" size="small" color="primary" label="as Primary Button" />
+            <AppButton to="/" sx={{ mr: 0 }} size="small" color="secondary" label="as Secondary Button" />
           </CardContent>
         </Card>
       </Grid>
@@ -100,36 +72,12 @@ const DevView = () => {
           <CardHeader title="AppIconButton" />
           <CardContent>
             <AppIconButton title="Default icon, no color specified" />
-            <AppIconButton
-              icon="close"
-              color="primary"
-              title="Close icon with Primary color"
-            />
-            <AppIconButton
-              icon="menu"
-              color="secondary"
-              title="Menu icon with Secondary color"
-            />
-            <AppIconButton
-              icon="settings"
-              color="error"
-              title="Settings icon with Error color"
-            />
-            <AppIconButton
-              icon="search"
-              color="warning"
-              title="Search icon with Warning color"
-            />
-            <AppIconButton
-              icon="info"
-              color="info"
-              title="Info icon with Info color"
-            />
-            <AppIconButton
-              icon="home"
-              color="success"
-              title="Home icon with Success color"
-            />
+            <AppIconButton icon="close" color="primary" title="Close icon with Primary color" />
+            <AppIconButton icon="menu" color="secondary" title="Menu icon with Secondary color" />
+            <AppIconButton icon="settings" color="error" title="Settings icon with Error color" />
+            <AppIconButton icon="search" color="warning" title="Search icon with Warning color" />
+            <AppIconButton icon="info" color="info" title="Info icon with Info color" />
+            <AppIconButton icon="home" color="success" title="Home icon with Success color" />
             <AppIconButton
               icon="visibilityoff"
               color="#FF8C00"
@@ -140,11 +88,7 @@ const DevView = () => {
               color="rgb(50, 205, 50)"
               title="VisibilityOn icon with LimeGreen (rgb(50, 205, 50)) color"
             />
-            <AppIconButton
-              icon="account"
-              color="inherit"
-              title="Account icon with Inherit color"
-            />
+            <AppIconButton icon="account" color="inherit" title="Account icon with Inherit color" />
             {/* <AppIconButton icon="close" color="primary" disabled title="Disabled Close icon with Primary color" /> */}
           </CardContent>
         </Card>
@@ -160,34 +104,24 @@ const DevView = () => {
             <Typography variant="h5">MUI Typography h5</Typography>
             <Typography variant="h6">MUI Typography h6</Typography>
             <Divider />
-            <Typography variant="subtitle1">
-              MUI Typography subtitle1
-            </Typography>
-            <Typography variant="subtitle2">
-              MUI Typography subtitle2
-            </Typography>
+            <Typography variant="subtitle1">MUI Typography subtitle1</Typography>
+            <Typography variant="subtitle2">MUI Typography subtitle2</Typography>
             <Typography variant="caption">MUI Typography caption</Typography>
             <Divider />
             <Typography variant="body1">
-              MUI Typography body1 - Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-              occaecat cupidatat non proident, sunt in culpa qui officia
-              deserunt mollit anim id est laborum.
+              MUI Typography body1 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+              qui officia deserunt mollit anim id est laborum.
             </Typography>
             <Divider />
             <Typography variant="body2">
-              MUI Typography body2 - Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-              dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-              exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-              occaecat cupidatat non proident, sunt in culpa qui officia
-              deserunt mollit anim id est laborum.
+              MUI Typography body2 - Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+              laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+              esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
+              qui officia deserunt mollit anim id est laborum.
             </Typography>
             <Divider />
             <Typography variant="overline">MUI Typography overline</Typography>

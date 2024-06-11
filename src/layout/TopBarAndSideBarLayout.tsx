@@ -19,22 +19,14 @@ import {
 interface Props extends StackProps {
   sidebarItems: Array<LinkToPage>;
   title: string;
-  variant:
-    | 'sidebarAlwaysTemporary'
-    | 'sidebarPersistentOnDesktop'
-    | 'sidebarAlwaysPersistent';
+  variant: 'sidebarAlwaysTemporary' | 'sidebarPersistentOnDesktop' | 'sidebarAlwaysPersistent';
 }
 
 /**
  * Renders "TopBar and SideBar" composition
  * @layout TopBarAndSideBarLayout
  */
-const TopBarAndSideBarLayout: FunctionComponent<Props> = ({
-  children,
-  sidebarItems,
-  title,
-  variant,
-}) => {
+const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarItems, title, variant }) => {
   const [state] = useAppStore();
   const [sidebarVisible, setSidebarVisible] = useState(false); // TODO: Verify is default value is correct
   const onMobile = useIsMobile();
@@ -64,15 +56,11 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({
       minHeight: '100vh', // Full screen height
       paddingTop: onMobile ? TOP_BAR_MOBILE_HEIGHT : TOP_BAR_DESKTOP_HEIGHT,
       paddingLeft:
-        sidebarProps.variant === 'persistent' &&
-        sidebarProps.open &&
-        sidebarProps?.anchor?.includes('left')
+        sidebarProps.variant === 'persistent' && sidebarProps.open && sidebarProps?.anchor?.includes('left')
           ? SIDE_BAR_WIDTH
           : undefined,
       paddingRight:
-        sidebarProps.variant === 'persistent' &&
-        sidebarProps.open &&
-        sidebarProps?.anchor?.includes('right')
+        sidebarProps.variant === 'persistent' && sidebarProps.open && sidebarProps?.anchor?.includes('right')
           ? SIDE_BAR_WIDTH
           : undefined,
     }),
@@ -121,11 +109,7 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({
     <Stack sx={stackStyles}>
       <Stack component="header">
         <TopBar startNode={startNode} title={title} endNode={endNode} />
-        <SideBar
-          items={sidebarItems}
-          onClose={onSideBarClose}
-          {...sidebarProps}
-        />
+        <SideBar items={sidebarItems} onClose={onSideBarClose} {...sidebarProps} />
       </Stack>
 
       <Stack

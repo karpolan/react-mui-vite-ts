@@ -1,20 +1,20 @@
-import { IconButtonProps, TooltipProps } from "@mui/material";
-import { IconName } from "../AppIcon/config";
-import { AppIconProps } from "../AppIcon/AppIcon";
-import { ElementType } from "react";
+import { IconButtonProps, TooltipProps } from '@mui/material';
+import { IconName } from '../AppIcon/config';
+import { AppIconProps } from '../AppIcon/AppIcon';
+import { ElementType } from 'react';
 
 export const MUI_ICON_BUTTON_COLORS = [
-  "inherit",
-  "default",
-  "primary",
-  "secondary",
-  "success",
-  "error",
-  "info",
-  "warning",
+  'inherit',
+  'default',
+  'primary',
+  'secondary',
+  'success',
+  'error',
+  'info',
+  'warning',
 ];
 
-export interface AppIconButtonProps extends Omit<IconButtonProps, "color"> {
+export interface AppIconButtonProps extends Omit<IconButtonProps, 'color'> {
   color?: string; // Not only 'inherit' | 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
   icon?: IconName | string;
   iconProps?: Partial<AppIconProps>;

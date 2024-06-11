@@ -9,8 +9,7 @@ const ComponentToTest = AppIconButton;
 
 function randomPropertyName(obj: object): string {
   const objectProperties = Object.keys(obj);
-  const propertyName =
-    objectProperties[Math.floor(Math.random() * objectProperties.length)];
+  const propertyName = objectProperties[Math.floor(Math.random() * objectProperties.length)];
   return propertyName;
 }
 
@@ -38,17 +37,10 @@ describe('<AppIconButton/> component', () => {
   });
 
   it('supports .color property', () => {
-    for (const color of [
-      ...MUI_ICON_BUTTON_COLORS,
-      randomColor(),
-      randomColor(),
-      randomColor(),
-    ]) {
+    for (const color of [...MUI_ICON_BUTTON_COLORS, randomColor(), randomColor(), randomColor()]) {
       const testId = randomText(8);
       const icon = randomPropertyName(ICONS) as string;
-      render(
-        <ComponentToTest data-testid={testId} color={color} icon={icon} />
-      );
+      render(<ComponentToTest data-testid={testId} color={color} icon={icon} />);
 
       // Button
       const button = screen.getByTestId(testId);

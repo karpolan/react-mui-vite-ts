@@ -33,25 +33,24 @@ export type IconName = keyof typeof ICONS;
  * Important: properties of ICONS object MUST be lowercase!
  * Note: You can use camelCase or UPPERCASE in the <Icon icon="someIconByName" /> component
  */
-export const ICONS /* Note: Setting type disables property autocomplete :( was - : Record<string, ComponentType> */ =
-  {
-    default: DefaultIcon,
-    logo: LogoIcon,
-    close: CloseIcon,
-    menu: MenuIcon,
-    settings: SettingsIcon,
-    visibilityon: VisibilityIcon,
-    visibilityoff: VisibilityOffIcon,
-    daynight: DayNightIcon,
-    night: NightIcon,
-    day: DayIcon,
-    search: SearchIcon,
-    info: InfoIcon,
-    home: HomeIcon,
-    account: AccountCircle,
-    signup: PersonAddIcon,
-    login: PersonIcon,
-    logout: ExitToAppIcon,
-    notifications: NotificationsIcon,
-    error: DangerousIcon,
-  };
+export const ICONS /* Note: Setting type disables property autocomplete :( was - : Record<string, ComponentType> */ = {
+  default: DefaultIcon,
+  logo: LogoIcon,
+  close: CloseIcon,
+  menu: MenuIcon,
+  settings: SettingsIcon,
+  visibilityon: VisibilityIcon,
+  visibilityoff: VisibilityOffIcon,
+  daynight: DayNightIcon,
+  night: NightIcon,
+  day: DayIcon,
+  search: SearchIcon,
+  info: InfoIcon,
+  home: HomeIcon,
+  account: AccountCircle,
+  signup: PersonAddIcon,
+  login: PersonIcon,
+  logout: ExitToAppIcon,
+  notifications: NotificationsIcon,
+  error: DangerousIcon,
+};

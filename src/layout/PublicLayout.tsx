@@ -72,15 +72,9 @@ const PublicLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   document.title = title; // Also Update Tab Title // TODO: Do we need this? Move it to useEffect()?
 
   return (
-    <TopBarAndSideBarLayout
-      sidebarItems={SIDE_BAR_ITEMS}
-      title={title}
-      variant="sidebarAlwaysTemporary"
-    >
+    <TopBarAndSideBarLayout sidebarItems={SIDE_BAR_ITEMS} title={title} variant="sidebarAlwaysTemporary">
       {children}
-      <Stack component="footer">
-        {bottomBarVisible && <BottomBar items={BOTTOM_BAR_ITEMS} />}
-      </Stack>
+      <Stack component="footer">{bottomBarVisible && <BottomBar items={BOTTOM_BAR_ITEMS} />}</Stack>
     </TopBarAndSideBarLayout>
   );
 };

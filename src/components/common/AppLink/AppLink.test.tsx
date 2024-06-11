@@ -7,9 +7,10 @@ import { randomColor, capitalize } from '@/utils/text';
 /**
  * AppLink wrapped with BrowserRouter
  */
-const ComponentToTest: FunctionComponent<
-  AppLinkProps & { pathnameToTest?: string }
-> = ({ pathnameToTest = '/test/', ...props }) => (
+const ComponentToTest: FunctionComponent<AppLinkProps & { pathnameToTest?: string }> = ({
+  pathnameToTest = '/test/',
+  ...props
+}) => (
   <MemoryRouter initialEntries={[{ pathname: pathnameToTest }]}>
     <AppLink {...props} />
   </MemoryRouter>
@@ -176,11 +177,7 @@ describe('<AppLink/> component', () => {
 
     // router.pathhname doesn't match .to prop
     render(
-      <ComponentToTest
-        pathnameToTest={'not-' + url}
-        to={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={'not-' + url} to={url} activeClassName={activeClassName}>
         {textPassive}
       </ComponentToTest>
     );
@@ -190,11 +187,7 @@ describe('<AppLink/> component', () => {
 
     // router.pathhname matches .to prop
     render(
-      <ComponentToTest
-        pathnameToTest={url}
-        to={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={url} to={url} activeClassName={activeClassName}>
         {textActive}
       </ComponentToTest>
     );
@@ -212,11 +205,7 @@ describe('<AppLink/> component', () => {
 
     // router.pathhname doesn't match .href prop
     render(
-      <ComponentToTest
-        pathnameToTest={'not-' + url}
-        href={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={'not-' + url} href={url} activeClassName={activeClassName}>
         {textPassive}
       </ComponentToTest>
     );
@@ -226,11 +215,7 @@ describe('<AppLink/> component', () => {
 
     // router.pathhname matches .href prop
     render(
-      <ComponentToTest
-        pathnameToTest={url}
-        href={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={url} href={url} activeClassName={activeClassName}>
         {textActive}
       </ComponentToTest>
     );
@@ -251,9 +236,9 @@ describe('<AppLink/> component', () => {
       );
       let link = screen.getByText(text);
       expect(link).toBeDefined();
-      underline === 'always'
-        ? expect(link).toHaveStyle('text-decoration: underline')
-        : expect(link).toHaveStyle('text-decoration: none');
+      underline === 'none'
+        ? expect(link).toHaveStyle('text-decoration: none')
+        : expect(link).toHaveStyle('text-decoration: underline');
       // TODO: make "hover" test with "mouse moving"
       expect(link).toHaveClass(`MuiLink-underline${capitalize(underline)}`);
     });

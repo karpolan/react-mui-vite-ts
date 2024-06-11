@@ -48,11 +48,7 @@ const PrivateLayout: FunctionComponent<PropsWithChildren> = ({ children }) => {
   document.title = title; // Also Update Tab Title  // TODO: Do we need this? Move it to useEffect()?
 
   return (
-    <TopBarAndSideBarLayout
-      sidebarItems={SIDE_BAR_ITEMS}
-      title={title}
-      variant="sidebarPersistentOnDesktop"
-    >
+    <TopBarAndSideBarLayout sidebarItems={SIDE_BAR_ITEMS} title={title} variant="sidebarPersistentOnDesktop">
       {children}
       {/* <Stack component="footer">Copyright &copy; </Stack> */}
     </TopBarAndSideBarLayout>

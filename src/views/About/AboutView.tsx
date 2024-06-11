@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Grid,
-} from '@mui/material';
+import { Card, CardActions, CardContent, CardHeader, Grid } from '@mui/material';
 import { AppButton, AppView } from '@/components';
 
 /**
@@ -17,13 +11,8 @@ const AboutView = () => {
     <AppView>
       <Grid item xs={12} md={3}>
         <Card>
-          <CardHeader
-            title="Application _TITLE_ here..."
-            subheader="TODO: Version 0.1"
-          />
-          <CardContent>
-            TODO: Detailed _DESCRIPTION_ of the application here...
-          </CardContent>
+          <CardHeader title="Application _TITLE_ here..." subheader="TODO: Version 0.1" />
+          <CardContent>TODO: Detailed _DESCRIPTION_ of the application here...</CardContent>
           <CardActions>
             <AppButton to="/" color="primary">
               OK

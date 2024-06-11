@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "react-mui-vite-ts",
-  "version": "0.1.7",
+  "version": "0.2.9",
   "description": "Starter project for Vite with React + MUI using TypeScript",
   "author": {
     "name": "Anton Karpenko",

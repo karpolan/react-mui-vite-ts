@@ -1,8 +1,8 @@
-import { FunctionComponent, useMemo } from "react";
-import { Tooltip, IconButton, IconButtonProps } from "@mui/material";
-import { alpha } from "@mui/material";
-import { AppIcon, AppLink } from "@/components";
-import { AppIconButtonProps, MUI_ICON_BUTTON_COLORS } from "./utils";
+import { FunctionComponent, useMemo } from 'react';
+import { Tooltip, IconButton, IconButtonProps } from '@mui/material';
+import { alpha } from '@mui/material';
+import { AppIcon, AppLink } from '@/components';
+import { AppIconButtonProps, MUI_ICON_BUTTON_COLORS } from './utils';
 
 /**
  * Renders MUI IconButton with SVG image by given Icon name
@@ -19,7 +19,7 @@ import { AppIconButtonProps, MUI_ICON_BUTTON_COLORS } from "./utils";
  * @param {object} [tooltipProps] - additional props to pass into the Tooltip component
  */
 const AppIconButton: FunctionComponent<AppIconButtonProps> = ({
-  color = "default",
+  color = 'default',
   component,
   children,
   disabled,
@@ -30,25 +30,17 @@ const AppIconButton: FunctionComponent<AppIconButtonProps> = ({
   tooltipProps,
   ...restOfProps
 }) => {
-  const componentToRender =
-    !component && (restOfProps?.href || restOfProps?.to)
-      ? AppLink
-      : component ?? IconButton;
+  const componentToRender = !component && (restOfProps?.href || restOfProps?.to) ? AppLink : component ?? IconButton;
 
-  const isMuiColor = useMemo(
-    () => MUI_ICON_BUTTON_COLORS.includes(color),
-    [color],
-  );
+  const isMuiColor = useMemo(() => MUI_ICON_BUTTON_COLORS.includes(color), [color]);
 
   const iconButtonToRender = useMemo(() => {
-    const colorToRender = isMuiColor
-      ? (color as IconButtonProps["color"])
-      : "default";
+    const colorToRender = isMuiColor ? (color as IconButtonProps['color']) : 'default';
     const sxToRender = {
       ...sx,
       ...(!isMuiColor && {
         color: color,
-        ":hover": {
+        ':hover': {
           backgroundColor: alpha(color, 0.04),
         },
       }),
@@ -65,17 +57,7 @@ const AppIconButton: FunctionComponent<AppIconButtonProps> = ({
         {children}
       </IconButton>
     );
-  }, [
-    color,
-    componentToRender,
-    children,
-    disabled,
-    icon,
-    isMuiColor,
-    sx,
-    iconProps,
-    restOfProps,
-  ]);
+  }, [color, componentToRender, children, disabled, icon, isMuiColor, sx, iconProps, restOfProps]);
 
   // When title is set, wrap the IconButton with Tooltip.
   // Note: when IconButton is disabled the Tooltip is not working, so we don't need it

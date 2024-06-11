@@ -19,12 +19,7 @@ describe('<AppAlert/> component', () => {
   });
 
   it('supports .severity property', () => {
-    const SEVERITIES: AlertProps['severity'][] = [
-      'error',
-      'info',
-      'success',
-      'warning',
-    ];
+    const SEVERITIES: AlertProps['severity'][] = ['error', 'info', 'success', 'warning'];
     for (const severity of SEVERITIES) {
       const testId = randomText(8);
       // const severity = 'success';
@@ -37,9 +32,7 @@ describe('<AppAlert/> component', () => {
       );
       const alert = screen.getByTestId(testId);
       expect(alert).toBeDefined();
-      expect(alert).toHaveClass(
-        `MuiAlert-filled${capitalize(severity as string)}`
-      );
+      expect(alert).toHaveClass(`MuiAlert-filled${capitalize(severity as string)}`);
     }
   });
 

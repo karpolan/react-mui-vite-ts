@@ -1,5 +1,5 @@
-import { FunctionComponent } from "react";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { FunctionComponent } from 'react';
+import { Link, useLocation, useParams } from 'react-router-dom';
 
 interface Props {
   name?: string;
@@ -11,7 +11,7 @@ interface Props {
 const NotImplementedView: FunctionComponent<Props> = ({ name }) => {
   const location = useLocation();
   const { id: paramId } = useParams();
-  const componentName = name || "View";
+  const componentName = name || 'View';
 
   return (
     <div>
@@ -23,7 +23,7 @@ const NotImplementedView: FunctionComponent<Props> = ({ name }) => {
         You've called the <b>{location?.pathname}</b> url
         {paramId && (
           <span>
-            {" "}
+            {' '}
             where <b>{paramId}</b> is a parameter
           </span>
         )}

@@ -1,10 +1,5 @@
 import { FunctionComponent, SyntheticEvent, useCallback } from 'react';
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogProps,
-} from '@mui/material';
+import { Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
 import { AppButton } from '..';
 import { AppDialogTitle } from './components';
 import { useDialogMinWidth } from './utils';
@@ -63,11 +58,7 @@ const CommonDialog: FunctionComponent<Props> = ({
       <DialogContent sx={{ py: 1 }}>{children}</DialogContent>
       <DialogActions sx={{ px: 3 }}>
         {!hideCancelButton && <AppButton onClick={onClose}>Cancel</AppButton>}
-        <AppButton
-          onClick={handleOnConfirm}
-          color={confirmButtonColor}
-          sx={{ mr: 0 }}
-        >
+        <AppButton onClick={handleOnConfirm} color={confirmButtonColor} sx={{ mr: 0 }}>
           {confirmButtonText}
         </AppButton>
       </DialogActions>

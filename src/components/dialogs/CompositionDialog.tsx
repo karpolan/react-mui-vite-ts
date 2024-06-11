@@ -1,11 +1,5 @@
 import { FunctionComponent, ReactNode, SyntheticEvent } from 'react';
-import {
-  Box,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogProps,
-} from '@mui/material';
+import { Box, Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
 import { AppDialogTitle } from './components';
 import { useDialogMinWidth } from './utils';
 

@@ -1,5 +1,5 @@
-import { useMediaQuery, useTheme } from "@mui/material";
-import { useCallback, useEffect, useState } from "react";
+import { useMediaQuery, useTheme } from '@mui/material';
+import { useCallback, useEffect, useState } from 'react';
 
 /**
  * Hook to detect onMobile vs. onDesktop using "resize" event listener
@@ -14,10 +14,10 @@ export function useIsMobileByTrackingWindowsResize() {
   }, [theme.breakpoints.values.sm]);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize); // Set resize listener
+    window.addEventListener('resize', handleResize); // Set resize listener
 
     return () => {
-      window.removeEventListener("resize", handleResize); // Remove resize listener
+      window.removeEventListener('resize', handleResize); // Remove resize listener
     };
   }, [handleResize]);
 
@@ -30,7 +30,7 @@ export function useIsMobileByTrackingWindowsResize() {
  */
 export function useIsMobileByMediaQuery() {
   const theme = useTheme();
-  return useMediaQuery(theme.breakpoints.down("sm"));
+  return useMediaQuery(theme.breakpoints.down('sm'));
 }
 
 /**
@@ -39,7 +39,7 @@ export function useIsMobileByMediaQuery() {
  */
 export function useIsWideScreen() {
   const theme = useTheme();
-  return useMediaQuery(theme.breakpoints.up("md"));
+  return useMediaQuery(theme.breakpoints.up('md'));
 }
 
 // export const useOnMobile = useOnMobileByTrackingWindowsResize;

@@ -1,8 +1,8 @@
-import { useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAppStore } from "@/store";
-import { FAKE_LOGIN } from "@/config";
-import { sessionStorageDelete } from "@/utils/sessionStorage";
+import { useCallback, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAppStore } from '@/store';
+import { FAKE_LOGIN } from '@/config';
+import { sessionStorageDelete } from '@/utils/sessionStorage';
 
 type CurrentUser = {
   id?: string;
@@ -45,10 +45,10 @@ export function useEventLogout() {
 
   return useCallback(() => {
     // TODO: AUTH: add auth and tokens cleanup here
-    sessionStorageDelete("access_token");
+    sessionStorageDelete('access_token');
 
-    dispatch({ type: "LOG_OUT" });
-    navigate("/", { replace: true }); // Redirect to home page by reloading the App
+    dispatch({ type: 'LOG_OUT' });
+    navigate('/', { replace: true }); // Redirect to home page by reloading the App
   }, [dispatch, navigate]);
 }
 
@@ -57,10 +57,7 @@ export function useEventLogout() {
  * @param {function} afterLogin callback to call after user login
  * @param {function} afterLogout callback to call after user logout
  */
-export function useAuthWatchdog(
-  afterLogin: () => void,
-  afterLogout: () => void,
-) {
+export function useAuthWatchdog(afterLogin: () => void, afterLogout: () => void) {
   const [state, dispatch] = useAppStore();
 
   useEffect(() => {

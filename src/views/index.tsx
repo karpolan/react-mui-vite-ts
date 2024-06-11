@@ -1,4 +1,4 @@
-import NotImplementedView from "./NotImplementedView";
-import NotFoundView from "./NotFoundView";
+import NotImplementedView from './NotImplementedView';
+import NotFoundView from './NotFoundView';
 
 export { NotFoundView, NotImplementedView as UserView };

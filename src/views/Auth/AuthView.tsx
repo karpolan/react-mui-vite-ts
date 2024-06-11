@@ -33,10 +33,7 @@ const AuthView = () => {
       </Stack>
 
       <div>
-        The source code is available at{' '}
-        <AppLink href="https://github.com/karpolan/react-mui-vite-ts">
-          Git Hub
-        </AppLink>
+        The source code is available at <AppLink href="https://github.com/karpolan/react-mui-vite-ts">GitHub</AppLink>
       </div>
     </AppView>
   );
