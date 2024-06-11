@@ -1,6 +1,6 @@
-import { FunctionComponent } from "react";
-import MuiAlert, { AlertProps as MuiAlertProps } from "@mui/material/Alert";
-import { APP_ALERT_SEVERITY, APP_ALERT_VARIANT } from "@/components/config";
+import { FunctionComponent } from 'react';
+import MuiAlert, { AlertProps as MuiAlertProps } from '@mui/material/Alert';
+import { APP_ALERT_SEVERITY, APP_ALERT_VARIANT } from '@/components/config';
 
 /**
  * Application styled Alert component
@@ -12,15 +12,7 @@ const AppAlert: FunctionComponent<MuiAlertProps> = ({
   onClose,
   ...restOfProps
 }) => {
-  return (
-    <MuiAlert
-      severity={severity}
-      sx={{ marginY: 1 }}
-      variant={variant}
-      onClose={onClose}
-      {...restOfProps}
-    />
-  );
+  return <MuiAlert severity={severity} sx={{ marginY: 1 }} variant={variant} onClose={onClose} {...restOfProps} />;
 };
 
 export default AppAlert;

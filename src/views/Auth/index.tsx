@@ -1,3 +1,3 @@
-import AuthView from "./AuthView";
+import AuthView from './AuthView';
 
 export default AuthView;

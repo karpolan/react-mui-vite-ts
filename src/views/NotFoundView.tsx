@@ -1,6 +1,6 @@
-import { useNavigate } from "react-router-dom";
-import { Stack, Typography } from "@mui/material";
-import { AppAlert, AppButton, AppLink, AppView } from "@/components";
+import { useNavigate } from 'react-router-dom';
+import { Stack, Typography } from '@mui/material';
+import { AppAlert, AppButton, AppLink, AppView } from '@/components';
 
 /**
  * "Not Found" aka "Error 404" view
@@ -11,15 +11,14 @@ const NotFoundView = () => {
   const navigate = useNavigate();
 
   const onClose = () => {
-    navigate("/", { replace: true });
+    navigate('/', { replace: true });
   };
 
   return (
     <AppView>
       <Typography variant="h3">Page not found!</Typography>
       <Typography variant="body1">
-        Requested address is unknown, please check your URL or go to the{" "}
-        <AppLink to="/">home page</AppLink>.
+        Requested address is unknown, please check your URL or go to the <AppLink to="/">home page</AppLink>.
       </Typography>
       <AppAlert severity="error" onClose={onClose}>
         Error 404 - Page not found

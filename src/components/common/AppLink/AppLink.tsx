@@ -1,8 +1,8 @@
-import { forwardRef, useMemo } from "react";
-import { Link as RouterLink, useLocation } from "react-router-dom";
-import MuiLink from "@mui/material/Link";
-import { APP_LINK_COLOR, APP_LINK_UNDERLINE } from "@/components/config";
-import { AppLinkProps, EXTERNAL_LINK_PROPS } from "./utils";
+import { forwardRef, useMemo } from 'react';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import MuiLink from '@mui/material/Link';
+import { APP_LINK_COLOR, APP_LINK_UNDERLINE } from '@/components/config';
+import { AppLinkProps, EXTERNAL_LINK_PROPS } from './utils';
 
 /**
  * Restyled Link for navigation in the App, support internal links by "to" prop and external links by "href" prop
@@ -16,7 +16,7 @@ import { AppLinkProps, EXTERNAL_LINK_PROPS } from "./utils";
 const AppLink = forwardRef<any, AppLinkProps>(
   (
     {
-      activeClassName = "active", // This class is applied to the Link component when the router.pathname matches the href/to prop
+      activeClassName = 'active', // This class is applied to the Link component when the router.pathname matches the href/to prop
       children,
       color = APP_LINK_COLOR,
       className: classNameProps,
@@ -26,27 +26,24 @@ const AppLink = forwardRef<any, AppLinkProps>(
       openInNewTab, // Note: all external links are open in new Tab by default
       ...restOfProps
     },
-    ref,
+    ref
   ) => {
     const location = useLocation();
     const currentPath = location.pathname;
-    const destination = to || href || ""; // Note: don't use ?? here!
+    const destination = to || href || ''; // Note: don't use ?? here!
 
     const className = useMemo(
-      () =>
-        [classNameProps, destination == currentPath && activeClassName]
-          .filter(Boolean)
-          .join(" "),
-      [classNameProps, activeClassName, destination, currentPath],
+      () => [classNameProps, destination == currentPath && activeClassName].filter(Boolean).join(' '),
+      [classNameProps, activeClassName, destination, currentPath]
     );
 
     const isExternal = useMemo(
       () =>
-        destination.startsWith("http") ||
-        destination.startsWith("//") ||
-        destination.startsWith("mailto:") ||
-        destination.startsWith("tel:"),
-      [destination],
+        destination.startsWith('http') ||
+        destination.startsWith('//') ||
+        destination.startsWith('mailto:') ||
+        destination.startsWith('tel:'),
+      [destination]
     );
 
     // console.log('isExternal', isExternal, destination);
@@ -55,8 +52,7 @@ const AppLink = forwardRef<any, AppLinkProps>(
       className,
       color,
       underline, // 'hover' | 'always' | 'none'
-      ...((openInNewTab || (isExternal && openInNewTab !== false)) &&
-        EXTERNAL_LINK_PROPS),
+      ...((openInNewTab || (isExternal && openInNewTab !== false)) && EXTERNAL_LINK_PROPS),
       ...restOfProps,
     };
     return isExternal ? (
@@ -64,16 +60,11 @@ const AppLink = forwardRef<any, AppLinkProps>(
         {children}
       </MuiLink>
     ) : (
-      <MuiLink
-        ref={ref}
-        component={RouterLink}
-        to={destination}
-        {...propsToRender}
-      >
+      <MuiLink ref={ref} component={RouterLink} to={destination} {...propsToRender}>
         {children}
       </MuiLink>
     );
-  },
+  }
 );
 
 export default AppLink;

@@ -1,4 +1,4 @@
-import { Component, ErrorInfo, ReactNode } from "react";
+import { Component, ErrorInfo, ReactNode } from 'react';
 
 interface Props {
   children: ReactNode;
@@ -18,7 +18,7 @@ interface State {
  */
 class ErrorBoundary extends Component<Props, State> {
   static defaultProps = {
-    name: "Error Boundary",
+    name: 'Error Boundary',
   };
 
   constructor(props: Props) {
@@ -43,7 +43,7 @@ class ErrorBoundary extends Component<Props, State> {
       return (
         <div>
           <h2>{this.props.name} - Something went wrong</h2>
-          <details style={{ whiteSpace: "pre-wrap" }}>
+          <details style={{ whiteSpace: 'pre-wrap' }}>
             {this.state?.error?.toString()}
             <br />
             {this.state?.errorInfo?.componentStack}

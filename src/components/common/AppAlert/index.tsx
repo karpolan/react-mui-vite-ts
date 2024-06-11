@@ -1,4 +1,4 @@
-import AppAlert from "./AppAlert";
+import AppAlert from './AppAlert';
 
 export { AppAlert };
 export default AppAlert;

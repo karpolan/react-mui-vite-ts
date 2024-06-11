@@ -1,9 +1,9 @@
-import { FunctionComponent, PropsWithChildren, useReducer } from "react";
-import { useMediaQuery } from "@mui/material";
-import { localStorageGet } from "@/utils/localStorage";
-import { AppContextReturningType, AppStoreContext } from "./AppStore";
-import AppStoreReducer from "./AppStoreReducer";
-import { AppStoreState, INITIAL_APP_STORE_STATE } from "./config";
+import { FunctionComponent, PropsWithChildren, useReducer } from 'react';
+import { useMediaQuery } from '@mui/material';
+import { localStorageGet } from '@/utils/localStorage';
+import { AppContextReturningType, AppStoreContext } from './AppStore';
+import AppStoreReducer from './AppStoreReducer';
+import { AppStoreState, INITIAL_APP_STORE_STATE } from './config';
 
 /**
  * Main global Store as HOC with React Context API
@@ -14,11 +14,9 @@ import { AppStoreState, INITIAL_APP_STORE_STATE } from "./config";
  *   <App/>
  * </AppStoreProvider>
  */
-const AppStoreProvider: FunctionComponent<PropsWithChildren> = ({
-  children,
-}) => {
-  const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
-  const previousDarkMode = Boolean(localStorageGet("darkMode"));
+const AppStoreProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
+  const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+  const previousDarkMode = Boolean(localStorageGet('darkMode'));
   // const tokenExists = Boolean(loadToken());
 
   const initialState: AppStoreState = {
@@ -26,16 +24,9 @@ const AppStoreProvider: FunctionComponent<PropsWithChildren> = ({
     darkMode: previousDarkMode || prefersDarkMode,
     // isAuthenticated: tokenExists,
   };
-  const value: AppContextReturningType = useReducer(
-    AppStoreReducer,
-    initialState,
-  );
+  const value: AppContextReturningType = useReducer(AppStoreReducer, initialState);
 
-  return (
-    <AppStoreContext.Provider value={value}>
-      {children}
-    </AppStoreContext.Provider>
-  );
+  return <AppStoreContext.Provider value={value}>{children}</AppStoreContext.Provider>;
 };
 
 export default AppStoreProvider;

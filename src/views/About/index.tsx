@@ -1,3 +1,3 @@
-import AboutView from "./AboutView";
+import AboutView from './AboutView';
 
 export default AboutView;

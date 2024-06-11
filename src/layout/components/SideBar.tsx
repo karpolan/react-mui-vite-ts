@@ -1,30 +1,13 @@
-import { FunctionComponent, useCallback, MouseEvent } from "react";
-import {
-  Stack,
-  Divider,
-  Drawer,
-  DrawerProps,
-  FormControlLabel,
-  Switch,
-  Tooltip,
-} from "@mui/material";
-import { useAppStore } from "@/store";
-import { LinkToPage } from "@/utils";
-import {
-  useEventLogout,
-  useEventSwitchDarkMode,
-  useIsAuthenticated,
-  useIsMobile,
-} from "@/hooks";
-import { AppIconButton, UserInfo } from "@/components";
-import { SIDE_BAR_WIDTH, TOP_BAR_DESKTOP_HEIGHT } from "../config";
-import SideBarNavList from "./SideBarNavList";
+import { FunctionComponent, useCallback, MouseEvent } from 'react';
+import { Stack, Divider, Drawer, DrawerProps, FormControlLabel, Switch, Tooltip } from '@mui/material';
+import { useAppStore } from '@/store';
+import { LinkToPage } from '@/utils';
+import { useEventLogout, useEventSwitchDarkMode, useIsAuthenticated, useIsMobile } from '@/hooks';
+import { AppIconButton, UserInfo } from '@/components';
+import { SIDE_BAR_WIDTH, TOP_BAR_DESKTOP_HEIGHT } from '../config';
+import SideBarNavList from './SideBarNavList';
 
-export interface SideBarProps
-  extends Pick<
-    DrawerProps,
-    "anchor" | "className" | "open" | "variant" | "onClose"
-  > {
+export interface SideBarProps extends Pick<DrawerProps, 'anchor' | 'className' | 'open' | 'variant' | 'onClose'> {
   items: Array<LinkToPage>;
 }
 
@@ -37,14 +20,7 @@ export interface SideBarProps
  * @param {string} variant - variant of the Drawer, one of 'permanent', 'persistent', 'temporary'
  * @param {function} onClose - called when the Drawer is closing
  */
-const SideBar: FunctionComponent<SideBarProps> = ({
-  anchor,
-  open,
-  variant,
-  items,
-  onClose,
-  ...restOfProps
-}) => {
+const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items, onClose, ...restOfProps }) => {
   const [state] = useAppStore();
   // const isAuthenticated = state.isAuthenticated; // Variant 1
   const isAuthenticated = useIsAuthenticated(); // Variant 2
@@ -55,11 +31,11 @@ const SideBar: FunctionComponent<SideBarProps> = ({
 
   const handleAfterLinkClick = useCallback(
     (event: MouseEvent) => {
-      if (variant === "temporary" && typeof onClose === "function") {
-        onClose(event, "backdropClick");
+      if (variant === 'temporary' && typeof onClose === 'function') {
+        onClose(event, 'backdropClick');
       }
     },
-    [variant, onClose],
+    [variant, onClose]
   );
 
   return (
@@ -70,23 +46,15 @@ const SideBar: FunctionComponent<SideBarProps> = ({
       PaperProps={{
         sx: {
           width: SIDE_BAR_WIDTH,
-          marginTop: onMobile
-            ? 0
-            : variant === "temporary"
-              ? 0
-              : TOP_BAR_DESKTOP_HEIGHT,
-          height: onMobile
-            ? "100%"
-            : variant === "temporary"
-              ? "100%"
-              : `calc(100% - ${TOP_BAR_DESKTOP_HEIGHT})`,
+          marginTop: onMobile ? 0 : variant === 'temporary' ? 0 : TOP_BAR_DESKTOP_HEIGHT,
+          height: onMobile ? '100%' : variant === 'temporary' ? '100%' : `calc(100% - ${TOP_BAR_DESKTOP_HEIGHT})`,
         },
       }}
       onClose={onClose}
     >
       <Stack
         sx={{
-          height: "100%",
+          height: '100%',
           padding: 2,
         }}
         {...restOfProps}
@@ -105,33 +73,21 @@ const SideBar: FunctionComponent<SideBarProps> = ({
 
         <Stack
           sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-evenly",
-            alignItems: "center",
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-evenly',
+            alignItems: 'center',
             marginTop: 2,
           }}
         >
-          <Tooltip
-            title={
-              state.darkMode ? "Switch to Light mode" : "Switch to Dark mode"
-            }
-          >
+          <Tooltip title={state.darkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}>
             <FormControlLabel
-              label={!state.darkMode ? "Light mode" : "Dark mode"}
-              control={
-                <Switch checked={state.darkMode} onChange={onSwitchDarkMode} />
-              }
+              label={!state.darkMode ? 'Light mode' : 'Dark mode'}
+              control={<Switch checked={state.darkMode} onChange={onSwitchDarkMode} />}
             />
           </Tooltip>
 
-          {isAuthenticated && (
-            <AppIconButton
-              icon="logout"
-              title="Logout Current User"
-              onClick={onLogout}
-            />
-          )}
+          {isAuthenticated && <AppIconButton icon="logout" title="Logout Current User" onClick={onLogout} />}
         </Stack>
       </Stack>
     </Drawer>

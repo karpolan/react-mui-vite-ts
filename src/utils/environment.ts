@@ -1,10 +1,7 @@
-export const IS_SERVER = typeof window === "undefined";
-export const IS_BROWSER =
-  typeof window !== "undefined" && typeof window?.document !== "undefined";
+export const IS_SERVER = typeof window === 'undefined';
+export const IS_BROWSER = typeof window !== 'undefined' && typeof window?.document !== 'undefined';
 export const IS_WEBWORKER =
-  typeof self === "object" &&
-  self.constructor &&
-  self.constructor.name === "DedicatedWorkerGlobalScope";
+  typeof self === 'object' && self.constructor && self.constructor.name === 'DedicatedWorkerGlobalScope';
 
 /**
  * Returns the value of the environment variable with the given name, raises an error if it is required and not set.
@@ -17,12 +14,12 @@ export const IS_WEBWORKER =
 export function envGet(
   name: string,
   isRequired = false,
-  defaultValue: string | undefined = undefined,
+  defaultValue: string | undefined = undefined
 ): string | undefined {
   // let variable = process.env[name]; // Classic way
   let variable = import.meta.env[name]; // Vite way
 
-  if (typeof variable === "undefined") {
+  if (typeof variable === 'undefined') {
     if (isRequired) {
       throw new Error(`Missing process.env.${name} variable`);
     }
@@ -38,23 +35,17 @@ export function envGet(
  * @returns {string} The value of incoming parameter.
  * @throws Error "Missing .env variable!"
  */
-export function envRequired(
-  passProcessDotEnvDotValueNameHere: string | undefined,
-): string {
-  if (typeof passProcessDotEnvDotValueNameHere === "undefined") {
-    throw new Error("Missing .env variable!");
+export function envRequired(passProcessDotEnvDotValueNameHere: string | undefined): string {
+  if (typeof passProcessDotEnvDotValueNameHere === 'undefined') {
+    throw new Error('Missing .env variable!');
   }
   return passProcessDotEnvDotValueNameHere;
 }
 
 export function getCurrentVersion(): string {
-  return (
-    import.meta.env.npm_package_version ??
-    import.meta.env.VITE_VERSION ??
-    "unknown"
-  );
+  return import.meta.env.npm_package_version ?? import.meta.env.VITE_VERSION ?? 'unknown';
 }
 
 export function getCurrentEnvironment(): string {
-  return import.meta.env.VITE_ENV ?? "development";
+  return import.meta.env.VITE_ENV ?? 'development';
 }

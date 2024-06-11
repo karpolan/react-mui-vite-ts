@@ -1,4 +1,4 @@
-import UserInfo from "./UserInfo";
+import UserInfo from './UserInfo';
 
 export { UserInfo };
 export default UserInfo;

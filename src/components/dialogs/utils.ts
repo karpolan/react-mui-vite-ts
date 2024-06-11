@@ -1,5 +1,5 @@
-import { useTheme } from "@mui/material";
-import { useIsWideScreen } from "@/hooks";
+import { useTheme } from '@mui/material';
+import { useIsWideScreen } from '@/hooks';
 
 /**
  * Returns the width of the dialog's body based on the screen size
@@ -8,8 +8,6 @@ import { useIsWideScreen } from "@/hooks";
 export function useDialogMinWidth() {
   const theme = useTheme();
   const onWideScreen = useIsWideScreen();
-  const paperMinWidth = onWideScreen
-    ? theme.breakpoints.values.md / 2
-    : theme.breakpoints.values.sm / 2;
+  const paperMinWidth = onWideScreen ? theme.breakpoints.values.md / 2 : theme.breakpoints.values.sm / 2;
   return paperMinWidth;
 }

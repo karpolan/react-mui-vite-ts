@@ -1,60 +1,52 @@
-import { fireEvent, render, screen } from "@testing-library/react";
-import { capitalize, randomColor, randomText } from "@/utils/text";
-import { APP_ICON_SIZE } from "@/components/config";
-import { MUI_ICON_BUTTON_COLORS } from "./utils";
-import { IconName, ICONS } from "../AppIcon/config";
-import AppIconButton from "./AppIconButton";
+import { fireEvent, render, screen } from '@testing-library/react';
+import { capitalize, randomColor, randomText } from '@/utils/text';
+import { APP_ICON_SIZE } from '@/components/config';
+import { MUI_ICON_BUTTON_COLORS } from './utils';
+import { IconName, ICONS } from '../AppIcon/config';
+import AppIconButton from './AppIconButton';
 
 const ComponentToTest = AppIconButton;
 
 function randomPropertyName(obj: object): string {
   const objectProperties = Object.keys(obj);
-  const propertyName =
-    objectProperties[Math.floor(Math.random() * objectProperties.length)];
+  const propertyName = objectProperties[Math.floor(Math.random() * objectProperties.length)];
   return propertyName;
 }
 
 /**
  * Tests for <AppIconButton/> component
  */
-describe("<AppIconButton/> component", () => {
-  it("renders itself", () => {
+describe('<AppIconButton/> component', () => {
+  it('renders itself', () => {
     const testId = randomText(8);
     render(<ComponentToTest data-testid={testId} />);
 
     // Button
     const button = screen.getByTestId(testId);
     expect(button).toBeDefined();
-    expect(button).toHaveAttribute("role", "button");
-    expect(button).toHaveAttribute("type", "button");
+    expect(button).toHaveAttribute('role', 'button');
+    expect(button).toHaveAttribute('type', 'button');
 
     // Icon
-    const svg = button.querySelector("svg");
+    const svg = button.querySelector('svg');
     expect(svg).toBeDefined();
-    expect(svg).toHaveAttribute("data-icon", "default"); // default icon
-    expect(svg).toHaveAttribute("size", String(APP_ICON_SIZE)); // default size
-    expect(svg).toHaveAttribute("height", String(APP_ICON_SIZE)); // default size when .size is not set
-    expect(svg).toHaveAttribute("width", String(APP_ICON_SIZE)); // default size when .size is not se
+    expect(svg).toHaveAttribute('data-icon', 'default'); // default icon
+    expect(svg).toHaveAttribute('size', String(APP_ICON_SIZE)); // default size
+    expect(svg).toHaveAttribute('height', String(APP_ICON_SIZE)); // default size when .size is not set
+    expect(svg).toHaveAttribute('width', String(APP_ICON_SIZE)); // default size when .size is not se
   });
 
-  it("supports .color property", () => {
-    for (const color of [
-      ...MUI_ICON_BUTTON_COLORS,
-      randomColor(),
-      randomColor(),
-      randomColor(),
-    ]) {
+  it('supports .color property', () => {
+    for (const color of [...MUI_ICON_BUTTON_COLORS, randomColor(), randomColor(), randomColor()]) {
       const testId = randomText(8);
       const icon = randomPropertyName(ICONS) as string;
-      render(
-        <ComponentToTest data-testid={testId} color={color} icon={icon} />,
-      );
+      render(<ComponentToTest data-testid={testId} color={color} icon={icon} />);
 
       // Button
       const button = screen.getByTestId(testId);
       expect(button).toBeDefined();
 
-      if (color == "default") {
+      if (color == 'default') {
         return; // Nothing to test for default color
       }
 
@@ -66,18 +58,18 @@ describe("<AppIconButton/> component", () => {
     }
   });
 
-  it("supports .disable property", () => {
+  it('supports .disable property', () => {
     const testId = randomText(8);
     render(<ComponentToTest data-testid={testId} disabled />);
 
     // Button
     const button = screen.getByTestId(testId);
     expect(button).toBeDefined();
-    expect(button).toHaveAttribute("aria-disabled", "true");
-    expect(button).toHaveClass("Mui-disabled");
+    expect(button).toHaveAttribute('aria-disabled', 'true');
+    expect(button).toHaveClass('Mui-disabled');
   });
 
-  it("supports .icon property", () => {
+  it('supports .icon property', () => {
     // Verify that all icons are supported
     for (const icon of Object.keys(ICONS) as IconName[]) {
       const testId = randomText(8);
@@ -88,14 +80,14 @@ describe("<AppIconButton/> component", () => {
       expect(button).toBeDefined();
 
       // Icon
-      const svg = button.querySelector("svg");
+      const svg = button.querySelector('svg');
       expect(button).toBeDefined();
-      expect(svg).toHaveAttribute("data-icon", icon.toLowerCase());
+      expect(svg).toHaveAttribute('data-icon', icon.toLowerCase());
     }
   });
 
-  it("supports .size property", () => {
-    const sizes = ["small", "medium", "large"] as const; //  as IconButtonProps['size'][];
+  it('supports .size property', () => {
+    const sizes = ['small', 'medium', 'large'] as const; //  as IconButtonProps['size'][];
     for (const size of sizes) {
       const testId = randomText(8);
       render(<ComponentToTest data-testid={testId} size={size} />);
@@ -107,7 +99,7 @@ describe("<AppIconButton/> component", () => {
     }
   });
 
-  it("supports .title property", async () => {
+  it('supports .title property', async () => {
     const testId = randomText(8);
     const title = randomText(16);
     render(<ComponentToTest data-testid={testId} title={title} />);
@@ -115,15 +107,15 @@ describe("<AppIconButton/> component", () => {
     // Button
     const button = screen.getByTestId(testId);
     expect(button).toBeDefined();
-    expect(button).toHaveAttribute("aria-label", title);
+    expect(button).toHaveAttribute('aria-label', title);
 
     // Emulate mouseover event to show tooltip
-    await fireEvent(button, new MouseEvent("mouseover", { bubbles: true }));
+    await fireEvent(button, new MouseEvent('mouseover', { bubbles: true }));
 
     // Tooltip is rendered in a separate div, so we need to find it by role
-    const tooltip = await screen.findByRole("tooltip");
+    const tooltip = await screen.findByRole('tooltip');
     expect(tooltip).toBeDefined();
     expect(tooltip).toHaveTextContent(title);
-    expect(tooltip).toHaveClass("MuiTooltip-popper");
+    expect(tooltip).toHaveClass('MuiTooltip-popper');
   });
 });

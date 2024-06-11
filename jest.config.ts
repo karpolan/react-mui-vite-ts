@@ -2,7 +2,7 @@ import type { Config } from 'jest';
 
 const jestConfig: Config = {
   moduleNameMapper: {
-    "^@/(.*)$": "<rootDir>/src/$1",
+    '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
   // preset: 'ts-jest',

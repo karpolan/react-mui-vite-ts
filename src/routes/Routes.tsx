@@ -1,10 +1,10 @@
-import { useCallback, useState } from "react";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { IS_DEBUG } from "@/config";
-import { AppLoading } from "@/components";
-import { useAuthWatchdog, useIsAuthenticated } from "@/hooks";
-import PRIVATE_ROUTES from "./PrivateRoutes";
-import PUBLIC_ROUTES from "./PublicRoutes";
+import { useCallback, useState } from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { IS_DEBUG } from '@/config';
+import { AppLoading } from '@/components';
+import { useAuthWatchdog, useIsAuthenticated } from '@/hooks';
+import PRIVATE_ROUTES from './PrivateRoutes';
+import PUBLIC_ROUTES from './PublicRoutes';
 
 const routesPrivate = createBrowserRouter(PRIVATE_ROUTES);
 const routesPublic = createBrowserRouter(PUBLIC_ROUTES);
@@ -35,11 +35,8 @@ const Routes = () => {
     return <AppLoading />;
   }
 
-  IS_DEBUG &&
-    console.log("Render <Routes/>", { isAuthenticated, refresh: refreshCount });
+  IS_DEBUG && console.log('Render <Routes/>', { isAuthenticated, refresh: refreshCount });
 
-  return (
-    <RouterProvider router={isAuthenticated ? routesPrivate : routesPublic} />
-  );
+  return <RouterProvider router={isAuthenticated ? routesPrivate : routesPublic} />;
 };
 export default Routes;

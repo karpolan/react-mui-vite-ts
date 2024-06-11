@@ -1,13 +1,8 @@
-import { FunctionComponent, SyntheticEvent, useCallback } from "react";
-import {
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogProps,
-} from "@mui/material";
-import { AppButton } from "..";
-import { AppDialogTitle } from "./components";
-import { useDialogMinWidth } from "./utils";
+import { FunctionComponent, SyntheticEvent, useCallback } from 'react';
+import { Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
+import { AppButton } from '..';
+import { AppDialogTitle } from './components';
+import { useDialogMinWidth } from './utils';
 
 interface Props extends DialogProps {
   data?: unknown;
@@ -26,13 +21,13 @@ interface Props extends DialogProps {
  * @param {function} props.onClose - event for Close and Cancel buttons and the backdrop
  */
 const CommonDialog: FunctionComponent<Props> = ({
-  children = "Children is missing...",
+  children = 'Children is missing...',
   open = false, // Don't show dialog by default
   data, // optional data passed to onConfirm callback
-  title = "Missing title...",
+  title = 'Missing title...',
   hideCancelButton = false,
-  confirmButtonText = "Confirm",
-  confirmButtonColor = "primary",
+  confirmButtonText = 'Confirm',
+  confirmButtonColor = 'primary',
   onConfirm,
   onClose,
   ...restOfProps
@@ -40,7 +35,7 @@ const CommonDialog: FunctionComponent<Props> = ({
   const paperMinWidth = useDialogMinWidth();
 
   const handleOnConfirm = useCallback(() => {
-    if (onConfirm && typeof onConfirm === "function") {
+    if (onConfirm && typeof onConfirm === 'function') {
       onConfirm(data);
     }
   }, [data, onConfirm]);
@@ -63,11 +58,7 @@ const CommonDialog: FunctionComponent<Props> = ({
       <DialogContent sx={{ py: 1 }}>{children}</DialogContent>
       <DialogActions sx={{ px: 3 }}>
         {!hideCancelButton && <AppButton onClick={onClose}>Cancel</AppButton>}
-        <AppButton
-          onClick={handleOnConfirm}
-          color={confirmButtonColor}
-          sx={{ mr: 0 }}
-        >
+        <AppButton onClick={handleOnConfirm} color={confirmButtonColor} sx={{ mr: 0 }}>
           {confirmButtonText}
         </AppButton>
       </DialogActions>

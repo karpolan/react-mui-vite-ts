@@ -1,3 +1,3 @@
-import AppDialogTitle from "./AppDialogTitle";
+import AppDialogTitle from './AppDialogTitle';
 
 export { AppDialogTitle };

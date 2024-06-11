@@ -1,15 +1,16 @@
-import { MemoryRouter } from "react-router-dom";
-import { FunctionComponent } from "react";
-import { render, screen } from "@testing-library/react";
-import AppLink, { AppLinkProps } from ".";
-import { randomColor, capitalize } from "@/utils/text";
+import { MemoryRouter } from 'react-router-dom';
+import { FunctionComponent } from 'react';
+import { render, screen } from '@testing-library/react';
+import AppLink, { AppLinkProps } from '.';
+import { randomColor, capitalize } from '@/utils/text';
 
 /**
  * AppLink wrapped with BrowserRouter
  */
-const ComponentToTest: FunctionComponent<
-  AppLinkProps & { pathnameToTest?: string }
-> = ({ pathnameToTest = "/test/", ...props }) => (
+const ComponentToTest: FunctionComponent<AppLinkProps & { pathnameToTest?: string }> = ({
+  pathnameToTest = '/test/',
+  ...props
+}) => (
   <MemoryRouter initialEntries={[{ pathname: pathnameToTest }]}>
     <AppLink {...props} />
   </MemoryRouter>
@@ -18,148 +19,148 @@ const ComponentToTest: FunctionComponent<
 /**
  * Tests for <AppLink/> component
  */
-describe("<AppLink/> component", () => {
-  it("renders itself", () => {
-    const text = "sample text";
-    const url = "https://example.com/";
+describe('<AppLink/> component', () => {
+  it('renders itself', () => {
+    const text = 'sample text';
+    const url = 'https://example.com/';
     render(<ComponentToTest href={url}>{text}</ComponentToTest>);
     const link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
   });
 
-  it("supports external link", () => {
-    let text = "external link via .href prop";
-    const url = "https://example.com/";
+  it('supports external link', () => {
+    let text = 'external link via .href prop';
+    const url = 'https://example.com/';
     render(<ComponentToTest href={url}>{text}</ComponentToTest>);
     // screen.debug();
     let link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).toHaveAttribute("target", "_blank"); // Open external links in new Tab by default
-    expect(link).toHaveAttribute("rel"); // For links opened in new Tab rel="noreferrer noopener" is required
+    expect(link).toHaveAttribute('target', '_blank'); // Open external links in new Tab by default
+    expect(link).toHaveAttribute('rel'); // For links opened in new Tab rel="noreferrer noopener" is required
     let rel = (link as any)?.rel;
-    expect(rel.includes("noreferrer")).toBeTruthy(); // ref="noreferrer" check
-    expect(rel.includes("noopener")).toBeTruthy(); // rel="noreferrer check
+    expect(rel.includes('noreferrer')).toBeTruthy(); // ref="noreferrer" check
+    expect(rel.includes('noopener')).toBeTruthy(); // rel="noreferrer check
 
-    text = "external link via .to prop";
+    text = 'external link via .to prop';
     render(<ComponentToTest to={url}>{text}</ComponentToTest>);
     // screen.debug();
     link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).toHaveAttribute("target", "_blank"); // Open external links in new Tab by default
-    expect(link).toHaveAttribute("rel"); // For links opened in new Tab rel="noreferrer noopener" is required
+    expect(link).toHaveAttribute('target', '_blank'); // Open external links in new Tab by default
+    expect(link).toHaveAttribute('rel'); // For links opened in new Tab rel="noreferrer noopener" is required
     rel = (link as any)?.rel;
-    expect(rel.includes("noreferrer")).toBeTruthy(); // ref="noreferrer" check
-    expect(rel.includes("noopener")).toBeTruthy(); // rel="noreferrer check
+    expect(rel.includes('noreferrer')).toBeTruthy(); // ref="noreferrer" check
+    expect(rel.includes('noopener')).toBeTruthy(); // rel="noreferrer check
   });
 
-  it("understands link without protocol //aaa.com passed in .to prop as external", () => {
-    const text = "external link without protocol";
-    const url = "//example.com/";
+  it('understands link without protocol //aaa.com passed in .to prop as external', () => {
+    const text = 'external link without protocol';
+    const url = '//example.com/';
     render(<ComponentToTest to={url}>{text}</ComponentToTest>);
     // screen.debug();
     const link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).toHaveAttribute("target", "_blank"); // Open external links in new Tab by default
-    expect(link).toHaveAttribute("rel"); // For links opened in new Tab rel="noreferrer noopener" is required
+    expect(link).toHaveAttribute('target', '_blank'); // Open external links in new Tab by default
+    expect(link).toHaveAttribute('rel'); // For links opened in new Tab rel="noreferrer noopener" is required
     const rel = (link as any)?.rel;
-    expect(rel.includes("noreferrer")).toBeTruthy(); // ref="noreferrer" check
-    expect(rel.includes("noopener")).toBeTruthy(); // rel="noreferrer check
+    expect(rel.includes('noreferrer')).toBeTruthy(); // ref="noreferrer" check
+    expect(rel.includes('noopener')).toBeTruthy(); // rel="noreferrer check
   });
 
-  it("understands relative links passed in .href prop as internal", () => {
-    const text = "external link without protocol";
-    const url = "/relative-link";
+  it('understands relative links passed in .href prop as internal', () => {
+    const text = 'external link without protocol';
+    const url = '/relative-link';
     render(<ComponentToTest href={url}>{text}</ComponentToTest>);
     // screen.debug();
     const link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).not.toHaveAttribute("target");
-    expect(link).not.toHaveAttribute("rel");
+    expect(link).not.toHaveAttribute('target');
+    expect(link).not.toHaveAttribute('rel');
   });
 
-  it("supports internal link", () => {
-    const text = "internal link";
-    const url = "/internal-link";
+  it('supports internal link', () => {
+    const text = 'internal link';
+    const url = '/internal-link';
     render(<ComponentToTest href={url}>{text}</ComponentToTest>);
     // screen.debug();
     const link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).not.toHaveAttribute("target");
-    expect(link).not.toHaveAttribute("rel");
+    expect(link).not.toHaveAttribute('target');
+    expect(link).not.toHaveAttribute('rel');
   });
 
-  it("supports .openInNewTab property", () => {
+  it('supports .openInNewTab property', () => {
     // External link with openInNewTab={false}
-    let text = "external link in same tab";
-    let url = "https://example.com/";
+    let text = 'external link in same tab';
+    let url = 'https://example.com/';
     render(
       <ComponentToTest href={url} openInNewTab={false}>
         {text}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     // screen.debug();
     let link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).not.toHaveAttribute("target");
-    expect(link).not.toHaveAttribute("rel");
+    expect(link).not.toHaveAttribute('target');
+    expect(link).not.toHaveAttribute('rel');
 
     // Internal link with openInNewTab={true}
-    text = "internal link in new tab";
-    url = "/internal-link-in-new-tab";
+    text = 'internal link in new tab';
+    url = '/internal-link-in-new-tab';
     render(
       <ComponentToTest to={url} openInNewTab>
         {text}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     link = screen.getByText(text);
     expect(link).toBeDefined();
-    expect(link).toHaveAttribute("href", url);
+    expect(link).toHaveAttribute('href', url);
     expect(link).toHaveTextContent(text);
-    expect(link).toHaveAttribute("target", "_blank"); // Open links in new Tab
-    expect(link).toHaveAttribute("rel"); // For links opened in new Tab rel="noreferrer noopener" is required
+    expect(link).toHaveAttribute('target', '_blank'); // Open links in new Tab
+    expect(link).toHaveAttribute('rel'); // For links opened in new Tab rel="noreferrer noopener" is required
     const rel = (link as any)?.rel;
-    expect(rel.includes("noreferrer")).toBeTruthy(); // ref="noreferrer" check
-    expect(rel.includes("noopener")).toBeTruthy(); // rel="noreferrer check
+    expect(rel.includes('noreferrer')).toBeTruthy(); // ref="noreferrer" check
+    expect(rel.includes('noopener')).toBeTruthy(); // rel="noreferrer check
   });
 
-  it("supports .className property", () => {
-    let text = "internal link with specific class";
-    let url = "/internal-link-with-class";
-    let className = "someClassName";
+  it('supports .className property', () => {
+    let text = 'internal link with specific class';
+    let url = '/internal-link-with-class';
+    let className = 'someClassName';
     render(
       <ComponentToTest to={url} className={className}>
         {text}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     let link = screen.getByText(text);
     expect(link).toBeDefined();
     expect(link).toHaveClass(className);
   });
 
-  it("supports .color property", () => {
+  it('supports .color property', () => {
     // Check several times with random colors
     for (let i = 1; i < 5; i++) {
       let text = `link #${i} with .color property`;
-      let url = "/internal-link-with-color";
+      let url = '/internal-link-with-color';
       let color = randomColor();
       render(
         <ComponentToTest to={url} color={color}>
           {text}
-        </ComponentToTest>,
+        </ComponentToTest>
       );
       let link = screen.getByText(text);
       expect(link).toBeDefined();
@@ -167,22 +168,18 @@ describe("<AppLink/> component", () => {
     }
   });
 
-  it("supports .activeClassName property in pair with .to property", () => {
+  it('supports .activeClassName property in pair with .to property', () => {
     let link;
-    let textActive = "internal link with activeClassName";
-    let textPassive = "internal link without activeClassName";
-    let url = "/internal-link";
-    let activeClassName = "someClassName";
+    let textActive = 'internal link with activeClassName';
+    let textPassive = 'internal link without activeClassName';
+    let url = '/internal-link';
+    let activeClassName = 'someClassName';
 
     // router.pathhname doesn't match .to prop
     render(
-      <ComponentToTest
-        pathnameToTest={"not-" + url}
-        to={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={'not-' + url} to={url} activeClassName={activeClassName}>
         {textPassive}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     link = screen.getByText(textPassive);
     expect(link).toBeDefined();
@@ -190,35 +187,27 @@ describe("<AppLink/> component", () => {
 
     // router.pathhname matches .to prop
     render(
-      <ComponentToTest
-        pathnameToTest={url}
-        to={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={url} to={url} activeClassName={activeClassName}>
         {textActive}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     link = screen.getByText(textActive);
     expect(link).toBeDefined();
     expect(link).toHaveClass(activeClassName);
   });
 
-  it("supports .activeClassName property in pair with .href property", () => {
+  it('supports .activeClassName property in pair with .href property', () => {
     let link;
-    let textActive = "external link with activeClassName";
-    let textPassive = "external link without activeClassName";
-    let url = "/external-link.com";
-    let activeClassName = "someClassName";
+    let textActive = 'external link with activeClassName';
+    let textPassive = 'external link without activeClassName';
+    let url = '/external-link.com';
+    let activeClassName = 'someClassName';
 
     // router.pathhname doesn't match .href prop
     render(
-      <ComponentToTest
-        pathnameToTest={"not-" + url}
-        href={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={'not-' + url} href={url} activeClassName={activeClassName}>
         {textPassive}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     link = screen.getByText(textPassive);
     expect(link).toBeDefined();
@@ -226,34 +215,30 @@ describe("<AppLink/> component", () => {
 
     // router.pathhname matches .href prop
     render(
-      <ComponentToTest
-        pathnameToTest={url}
-        href={url}
-        activeClassName={activeClassName}
-      >
+      <ComponentToTest pathnameToTest={url} href={url} activeClassName={activeClassName}>
         {textActive}
-      </ComponentToTest>,
+      </ComponentToTest>
     );
     link = screen.getByText(textActive);
     expect(link).toBeDefined();
     expect(link).toHaveClass(activeClassName);
   });
 
-  it("supports .underline property", () => {
+  it('supports .underline property', () => {
     // Enumerate all possible values
-    ["always", "hover", "none"].forEach((underline) => {
+    ['always', 'hover', 'none'].forEach((underline) => {
       let text = `link with .underline == "${underline}"`;
-      let url = "/internal-link-with-underline";
+      let url = '/internal-link-with-underline';
       render(
         <ComponentToTest to={url} underline={underline as any}>
           {text}
-        </ComponentToTest>,
+        </ComponentToTest>
       );
       let link = screen.getByText(text);
       expect(link).toBeDefined();
-      underline === "none"
-        ? expect(link).toHaveStyle("text-decoration: none")
-        : expect(link).toHaveStyle("text-decoration: underline");
+      underline === 'none'
+        ? expect(link).toHaveStyle('text-decoration: none')
+        : expect(link).toHaveStyle('text-decoration: underline');
       // TODO: make "hover" test with "mouse moving"
       expect(link).toHaveClass(`MuiLink-underline${capitalize(underline)}`);
     });

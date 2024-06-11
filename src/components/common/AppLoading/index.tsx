@@ -1,4 +1,4 @@
-import AppLoading from "./AppLoading";
+import AppLoading from './AppLoading';
 
 export { AppLoading };
 export default AppLoading;

@@ -1,4 +1,4 @@
-import CommonDialog from "./CommonDialog";
-import CompositionDialog from "./CompositionDialog";
+import CommonDialog from './CommonDialog';
+import CompositionDialog from './CompositionDialog';
 
 export { CommonDialog, CompositionDialog };
