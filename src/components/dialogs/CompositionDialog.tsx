@@ -1,13 +1,13 @@
-import { FunctionComponent, ReactNode, SyntheticEvent } from 'react';
+import { FunctionComponent, ReactNode, SyntheticEvent } from "react";
 import {
   Box,
   Dialog,
   DialogActions,
   DialogContent,
   DialogProps,
-} from '@mui/material';
-import { AppDialogTitle } from './components';
-import { useDialogMinWidth } from './utils';
+} from "@mui/material";
+import { AppDialogTitle } from "./components";
+import { useDialogMinWidth } from "./utils";
 
 interface Props extends DialogProps {
   title?: string;
@@ -22,8 +22,8 @@ interface Props extends DialogProps {
 const CompositionDialog: FunctionComponent<Props> = ({
   actions,
   open = false, // Don't show dialog by default
-  children = 'Children is missing...',
-  title = 'Missing title...',
+  children = "Children is missing...",
+  title = "Missing title...",
   onClose,
   ...restOfProps
 }) => {

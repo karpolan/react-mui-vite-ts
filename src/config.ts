@@ -1,10 +1,14 @@
-import { envRequired, getCurrentEnvironment } from "@/utils/environment";
+import {
+  // envRequired,
+  getCurrentEnvironment,
+} from "@/utils/environment";
 
 export const IS_DEBUG = import.meta.env.VITE_DEBUG === "true"; // Enables logging, etc.
 
 export const IS_PRODUCTION = getCurrentEnvironment() === "production"; // Enables analytics, etc.
 
-export const PUBLIC_URL = envRequired(import.meta.env.VITE_PUBLIC_URL);
+// export const PUBLIC_URL = envRequired(import.meta.env.VITE_PUBLIC_URL); // Variant 1: .env variable is required
+export const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL; // Variant 2: .env variable is optional
 
 export const FAKE_LOGIN = import.meta.env.VITE_FAKE_LOGIN === "true"; // Enables fake login for development
 

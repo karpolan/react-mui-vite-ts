@@ -1,11 +1,11 @@
-import { ChangeEvent, useState, ReactNode, useCallback } from 'react';
-import { Card, CardHeader, Grid, TextField } from '@mui/material';
-import { AppButton, AppIconButton } from '@/components';
+import { ChangeEvent, useState, ReactNode, useCallback } from "react";
+import { Card, CardHeader, Grid, TextField } from "@mui/material";
+import { AppButton, AppIconButton } from "@/components";
 import {
   CommonDialog as MessageDialog,
   CommonDialog as ConfirmationDialog,
   CompositionDialog as EmailEditDialog,
-} from '@/components/dialogs';
+} from "@/components/dialogs";
 
 /**
  * Renders demo section for Dialogs
@@ -13,14 +13,14 @@ import {
 const DialogsSection = () => {
   const [modal, setModal] = useState<ReactNode | null>(null);
   const [openEmailDialog, setOpenEmailDialog] = useState(false);
-  const [email, setEmail] = useState('i@karpolan.com');
+  const [email, setEmail] = useState("i@karpolan.com");
 
   const onDialogClose = useCallback(() => {
     setModal(null);
   }, []);
 
   const onMessageDialogConfirm = useCallback((data: unknown) => {
-    console.info('onMessageDialogConfirm() - data:', data);
+    console.info("onMessageDialogConfirm() - data:", data);
     setModal(null);
   }, []);
 
@@ -38,19 +38,19 @@ const DialogsSection = () => {
 					     The "Cancel" button can be hidden`}
         onClose={onDialogClose}
         onConfirm={onMessageDialogConfirm}
-      />
+      />,
     );
   };
 
   const onConfirmDialogConfirm = useCallback((data: unknown) => {
-    console.info('onConfirmDialogConfirm() - data:', data);
+    console.info("onConfirmDialogConfirm() - data:", data);
     setModal(null);
   }, []);
 
   const onConfirmDialogOpen = () => {
     const dialogData = {
       id: 123,
-      name: 'Sample data for Confirm Dialog',
+      name: "Sample data for Confirm Dialog",
     };
     setModal(
       <ConfirmationDialog
@@ -121,12 +121,12 @@ const DialogsSection = () => {
         confirmButtonText="Confirm and do something"
         onClose={onDialogClose}
         onConfirm={onConfirmDialogConfirm}
-      />
+      />,
     );
   };
 
   const onEditEmailDialogClose = useCallback((data: unknown) => {
-    console.info('onEditEmailDialogClose() - data:', data);
+    console.info("onEditEmailDialogClose() - data:", data);
     setOpenEmailDialog(false);
   }, []);
 

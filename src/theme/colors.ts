@@ -1,12 +1,12 @@
-import { PaletteOptions, SimplePaletteColorOptions } from '@mui/material';
+import { PaletteOptions, SimplePaletteColorOptions } from "@mui/material";
 
 const COLOR_PRIMARY: SimplePaletteColorOptions = {
-  main: '#80deea',
+  main: "#80deea",
   // contrastText: "#000000",
 };
 
 const COLOR_SECONDARY: SimplePaletteColorOptions = {
-  main: '#80eac1',
+  main: "#80eac1",
   // contrastText: "#000000",
 };
 

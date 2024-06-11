@@ -4,8 +4,8 @@ import {
   CardContent,
   CardHeader,
   Grid,
-} from '@mui/material';
-import { AppButton, AppView } from '@/components';
+} from "@mui/material";
+import { AppButton, AppView } from "@/components";
 
 /**
  * Renders "About" view
