@@ -40,6 +40,13 @@ export function compareTexts(a: string | null | undefined, b: string | null | un
 export const capitalize = (s: string): string => s.charAt(0).toUpperCase() + s.substring(1);
 
 /**
+ * Capitalize the first letter of every Word in a string
+ * @param {string} s - the sentence of words to capitalize
+ * @returns {string} The capitalized sentence of words
+ */
+export const capitalizeAllWords = (s: string): string => s.split(' ').map(capitalize).join(' ');
+
+/**
  * Generate a random color as #RRGGBB value
  * @returns {string} - the generated color
  */

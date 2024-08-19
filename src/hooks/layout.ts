@@ -1,16 +1,16 @@
-import { useMediaQuery, useTheme } from '@mui/material';
+import { Breakpoint, useMediaQuery, useTheme } from '@mui/material';
 import { useCallback, useEffect, useState } from 'react';
 
 /**
- * Hook to detect onMobile vs. onDesktop using "resize" event listener
- * @returns {boolean} true when on onMobile, false when on onDesktop
+ * Hook to detect isMobile vs. onDesktop using "resize" event listener
+ * @returns {boolean} true when on isMobile, false when on onDesktop
  */
 export function useIsMobileByTrackingWindowsResize() {
   const theme = useTheme();
-  const [onMobile, setOnMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const handleResize = useCallback(() => {
-    setOnMobile(window.innerWidth < theme.breakpoints.values.sm); // sx, sm are "onMobile"
+    setIsMobile(window.innerWidth < theme.breakpoints.values.sm); // sx, sm are "isMobile"
   }, [theme.breakpoints.values.sm]);
 
   useEffect(() => {
@@ -21,16 +21,17 @@ export function useIsMobileByTrackingWindowsResize() {
     };
   }, [handleResize]);
 
-  return onMobile;
+  return isMobile;
 }
 
 /**
- * Hook to detect onMobile vs. onDesktop using Media Query
- * @returns {boolean} true when on onMobile, false when on onDesktop
+ * Hook to detect isMobile vs. onDesktop using Media Query
+ * @param {Breakpoint} [downBreakpoint] - Breakpoint to detect isMobile. Default is 'sm'
+ * @returns {boolean} true when on isMobile, false when on onDesktop
  */
-export function useIsMobileByMediaQuery() {
+export function useIsMobileByMediaQuery(downBreakpoint: Breakpoint | number = 'sm') {
   const theme = useTheme();
-  return useMediaQuery(theme.breakpoints.down('sm'));
+  return useMediaQuery(theme.breakpoints.down(downBreakpoint));
 }
 
 /**
@@ -42,5 +43,5 @@ export function useIsWideScreen() {
   return useMediaQuery(theme.breakpoints.up('md'));
 }
 
-// export const useOnMobile = useOnMobileByTrackingWindowsResize;
+// export const useIsMobile = useIsMobileByTrackingWindowsResize;
 export const useIsMobile = useIsMobileByMediaQuery;

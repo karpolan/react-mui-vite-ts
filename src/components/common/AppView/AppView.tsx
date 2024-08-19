@@ -9,7 +9,7 @@ import { CONTENT_MAX_WIDTH, CONTENT_MIN_WIDTH } from '@/components/config';
 const AppView: FunctionComponent<PropsWithChildren<StackProps>> = ({ children, minWidth, ...restOfProps }) => {
   const theme = useTheme();
   const onSmallScreens = useMediaQuery(theme.breakpoints.down('sm'));
-  const minWidthToRender = onSmallScreens ? '100%' : minWidth ?? CONTENT_MIN_WIDTH;
+  const minWidthToRender = onSmallScreens ? '100%' : (minWidth ?? CONTENT_MIN_WIDTH);
 
   return (
     <Stack alignSelf="center" gap={2} maxWidth={CONTENT_MAX_WIDTH} minWidth={minWidthToRender} {...restOfProps}>

@@ -9,7 +9,7 @@ export default defineConfig({
   },
   plugins: [react(), tsConfigPaths()],
   server: {
-    open: true,
+    open: true, // Opens the default browser when the server starts
     port: 3000,
   },
   test: {

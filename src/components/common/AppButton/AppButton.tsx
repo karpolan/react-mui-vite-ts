@@ -66,7 +66,7 @@ const AppButton: FunctionComponent<AppButtonProps> = ({
   const isMuiColor = useMemo(() => MUI_BUTTON_COLORS.includes(propColor), [propColor]);
 
   const componentToRender =
-    !propComponent && (restOfProps?.href || restOfProps?.to) ? AppLink : propComponent ?? Button;
+    !propComponent && (restOfProps?.href || restOfProps?.to) ? AppLink : (propComponent ?? Button);
 
   const colorToRender = isMuiColor ? (propColor as ButtonProps['color']) : 'inherit';
   const sxToRender = {

@@ -30,7 +30,7 @@ const AppIconButton: FunctionComponent<AppIconButtonProps> = ({
   tooltipProps,
   ...restOfProps
 }) => {
-  const componentToRender = !component && (restOfProps?.href || restOfProps?.to) ? AppLink : component ?? IconButton;
+  const componentToRender = !component && (restOfProps?.href || restOfProps?.to) ? AppLink : (component ?? IconButton);
 
   const isMuiColor = useMemo(() => MUI_ICON_BUTTON_COLORS.includes(color), [color]);
 
