@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAppStore } from '@/store';
-import { FAKE_LOGIN } from '@/config';
+import { IS_FAKE_LOGIN } from '@/config';
 import { sessionStorageDelete } from '@/utils/sessionStorage';
 
 type CurrentUser = {
@@ -27,7 +27,7 @@ export function useCurrentUser(): CurrentUser | undefined {
  */
 export function useIsAuthenticated() {
   const [state] = useAppStore();
-  const result = FAKE_LOGIN ? true : state.isAuthenticated;
+  const result = IS_FAKE_LOGIN ? true : state.isAuthenticated;
 
   // TODO: AUTH: add access token verification or other authentication check here
   // result = Boolean(sessionStorageGet('access_token', ''));
