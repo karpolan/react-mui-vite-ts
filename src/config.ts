@@ -17,8 +17,8 @@ IS_DEBUG &&
   console.log('@/config', {
     environment: getCurrentEnvironment(),
     version: getCurrentVersion(),
-    IS_DEBUG,
-    IS_PRODUCTION,
     PUBLIC_URL,
+    IS_PRODUCTION,
+    IS_DEBUG,
     IS_FAKE_LOGIN,
   });
