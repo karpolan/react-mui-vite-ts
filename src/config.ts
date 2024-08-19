@@ -1,6 +1,7 @@
 import {
   // envRequired,
   getCurrentEnvironment,
+  getCurrentVersion,
 } from '@/utils/environment';
 
 export const IS_DEBUG = import.meta.env.VITE_DEBUG === 'true'; // Enables logging, etc.
@@ -14,6 +15,8 @@ export const FAKE_LOGIN = import.meta.env.VITE_FAKE_LOGIN === 'true'; // Enables
 
 IS_DEBUG &&
   console.log('@/config', {
+    environment: getCurrentEnvironment(),
+    version: getCurrentVersion(),
     IS_DEBUG,
     IS_PRODUCTION,
     PUBLIC_URL,
