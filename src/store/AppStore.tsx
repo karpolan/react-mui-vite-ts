@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 import { ComponentType, createContext, Dispatch, FunctionComponent, useContext } from 'react';
 import { AppStoreAction } from './AppStoreReducer';
 import { AppStoreState, INITIAL_APP_STORE_STATE } from './config';

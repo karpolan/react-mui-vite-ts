@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "react-mui-vite-ts",
-  "version": "0.3.15",
+  "version": "0.3.33",
   "description": "Starter project for Vite with React + MUI using TypeScript",
   "author": {
     "name": "Anton Karpenko",
@@ -25,8 +25,8 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
-    "react": "latest",
-    "react-dom": "latest",
+    "react": "^18",
+    "react-dom": "^18",
     "react-router-dom": "latest"
   },
   "devDependencies": {
@@ -42,7 +42,7 @@
     "@typescript-eslint/eslint-plugin": "latest",
     "@vitejs/plugin-react-swc": "latest",
     "eslint": "latest",
-    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-hooks": "^5",
     "eslint-plugin-react-refresh": "latest",
     "globals": "latest",
     "jest": "latest",
