@@ -43,9 +43,9 @@ export function envRequired(passProcessDotEnvDotValueNameHere: string | undefine
 }
 
 export function getCurrentVersion(): string {
-  return import.meta.env.npm_package_version ?? import.meta.env.VITE_VERSION ?? 'unknown';
+  return import.meta.env.VITE_VERSION ?? import.meta.env.npm_package_version ?? 'latest';
 }
 
 export function getCurrentEnvironment(): string {
-  return import.meta.env.VITE_ENV ?? 'development';
+  return import.meta.env.VITE_ENV ?? import.meta.env.NODE_ENV ?? 'development';
 }

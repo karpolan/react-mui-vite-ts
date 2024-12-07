@@ -1,10 +1,20 @@
 /**
+ * Structure of the "Current User" in the AppStore
+ * TODO: Replace with your API/DTO structure
+ */
+export interface CurrentUser {
+  displayName: string;
+  avatarUrl?: string;
+  userId?: string;
+}
+
+/**
  * Structure of the "State" in the AppStore
  */
 export interface AppStoreState {
   darkMode: boolean;
   isAuthenticated: boolean;
-  currentUser?: unknown | undefined;
+  currentUser?: CurrentUser | undefined;
 }
 
 /**
