@@ -1,8 +1,9 @@
 import { ElementType, FunctionComponent, ReactNode, useMemo } from 'react';
-import Button, { ButtonProps } from '@mui/material/Button';
+import MuiButton, { ButtonProps as MuiButtonProps } from '@mui/material/Button';
 import AppIcon from '../AppIcon';
 import AppLink from '../AppLink';
 import { APP_BUTTON_VARIANT } from '@/components/config';
+import { IconName } from '../AppIcon/config';
 
 const MUI_BUTTON_COLORS = ['inherit', 'primary', 'secondary', 'success', 'error', 'info', 'warning'];
 
@@ -10,7 +11,7 @@ const DEFAULT_SX_VALUES = {
   margin: 1, // By default the AppButton has theme.spacing(1) margin on all sides
 };
 
-export interface AppButtonProps extends Omit<ButtonProps, 'color' | 'endIcon' | 'startIcon'> {
+export interface AppButtonProps extends Omit<MuiButtonProps, 'color' | 'endIcon' | 'startIcon'> {
   color?: string; // Not only 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
   endIcon?: string | ReactNode;
   label?: string; // Alternate to .text
@@ -42,50 +43,56 @@ export interface AppButtonProps extends Omit<ButtonProps, 'color' | 'endIcon' | 
  */
 const AppButton: FunctionComponent<AppButtonProps> = ({
   children,
-  color: propColor = 'inherit',
-  component: propComponent,
+  color: customColor = 'inherit',
+  component: customComponent,
   endIcon,
   label,
   startIcon,
-  sx: propSx = DEFAULT_SX_VALUES,
+  sx: customSx,
   text,
   underline = 'none',
   variant = APP_BUTTON_VARIANT,
   ...restOfProps
 }) => {
   const iconStart: ReactNode = useMemo(
-    () => (!startIcon ? undefined : typeof startIcon === 'string' ? <AppIcon icon={String(startIcon)} /> : startIcon),
+    () =>
+      !startIcon ? undefined : typeof startIcon === 'string' ? <AppIcon icon={startIcon as IconName} /> : startIcon,
     [startIcon]
   );
 
   const iconEnd: ReactNode = useMemo(
-    () => (!endIcon ? undefined : typeof endIcon === 'string' ? <AppIcon icon={String(endIcon)} /> : endIcon),
+    () => (!endIcon ? undefined : typeof endIcon === 'string' ? <AppIcon icon={endIcon as IconName} /> : endIcon),
     [endIcon]
   );
 
-  const isMuiColor = useMemo(() => MUI_BUTTON_COLORS.includes(propColor), [propColor]);
+  const isMuiColor = useMemo(() => MUI_BUTTON_COLORS.includes(customColor), [customColor]);
 
   const componentToRender =
-    !propComponent && (restOfProps?.href || restOfProps?.to) ? AppLink : (propComponent ?? Button);
+    !customComponent && (restOfProps?.href || restOfProps?.to) ? AppLink : (customComponent ?? MuiButton);
 
-  const colorToRender = isMuiColor ? (propColor as ButtonProps['color']) : 'inherit';
+  const colorForMuiButton = isMuiColor ? (customColor as MuiButtonProps['color']) : 'inherit';
   const sxToRender = {
-    ...propSx,
-    ...(isMuiColor ? {} : { color: propColor }),
+    ...DEFAULT_SX_VALUES, // Default margin, padding, and so on
+    ...(customSx ? customSx : {}), // Custom styles
+    ...(isMuiColor ? {} : { color: customColor }), // If custom color is not MUI color, apply it as a text color
+  };
+  const propsToRender = {
+    ...restOfProps,
+    underline,
   };
 
   return (
-    <Button
+    <MuiButton
       component={componentToRender}
-      color={colorToRender}
+      color={colorForMuiButton}
       endIcon={iconEnd}
       startIcon={iconStart}
       sx={sxToRender}
       variant={variant}
-      {...{ ...restOfProps, underline }}
+      {...propsToRender}
     >
       {children || label || text}
-    </Button>
+    </MuiButton>
   );
 };
 

@@ -1,10 +1,15 @@
 import { FunctionComponent, SyntheticEvent, useCallback } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogProps } from '@mui/material';
+import {
+  Dialog as MuiDialog,
+  DialogActions as MuiDialogActions,
+  DialogContent as MuiDialogContent,
+  DialogProps as MuiDialogProps,
+} from '@mui/material';
 import { AppButton } from '..';
 import { AppDialogTitle } from './components';
 import { useDialogMinWidth } from './utils';
 
-interface Props extends DialogProps {
+interface Props extends MuiDialogProps {
   data?: unknown;
   title?: string;
   hideCancelButton?: boolean;
@@ -41,7 +46,7 @@ const CommonDialog: FunctionComponent<Props> = ({
   }, [data, onConfirm]);
 
   return (
-    <Dialog
+    <MuiDialog
       aria-labelledby="form-dialog-title"
       open={open}
       PaperProps={{
@@ -55,14 +60,14 @@ const CommonDialog: FunctionComponent<Props> = ({
       <AppDialogTitle id="form-dialog-title" onClose={onClose}>
         {title}
       </AppDialogTitle>
-      <DialogContent sx={{ py: 1 }}>{children}</DialogContent>
-      <DialogActions sx={{ px: 3 }}>
+      <MuiDialogContent sx={{ py: 1 }}>{children}</MuiDialogContent>
+      <MuiDialogActions sx={{ px: 3 }}>
         {!hideCancelButton && <AppButton onClick={onClose}>Cancel</AppButton>}
         <AppButton onClick={handleOnConfirm} color={confirmButtonColor} sx={{ mr: 0 }}>
           {confirmButtonText}
         </AppButton>
-      </DialogActions>
-    </Dialog>
+      </MuiDialogActions>
+    </MuiDialog>
   );
 };
 

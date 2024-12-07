@@ -12,7 +12,7 @@ const ComponentToTest = AppIcon;
 describe('<AppIcon/> component', () => {
   it('renders itself', () => {
     const testId = randomText(8);
-    render(<ComponentToTest data-testid={testId} />);
+    render(<ComponentToTest data-testid={testId} icon="default" />);
     const svg = screen.getByTestId(testId);
     expect(svg).toBeDefined();
     expect(svg).toHaveAttribute('data-icon', 'default');
@@ -24,7 +24,7 @@ describe('<AppIcon/> component', () => {
   it('supports .color property', () => {
     const testId = randomText(8);
     const color = randomColor(); // Note: 'rgb(255, 128, 0)' format is used by react-icons npm, so tests may fail
-    render(<ComponentToTest data-testid={testId} color={color} />);
+    render(<ComponentToTest data-testid={testId} color={color} icon="default" />);
     const svg = screen.getByTestId(testId);
     expect(svg).toHaveAttribute('data-icon', 'default');
     // expect(svg).toHaveAttribute('color', color); // TODO: Looks like MUI Icons exclude .color property from <svg> rendering
@@ -39,14 +39,14 @@ describe('<AppIcon/> component', () => {
       render(<ComponentToTest data-testid={testId} icon={icon} />);
       const svg = screen.getByTestId(testId);
       expect(svg).toBeDefined();
-      expect(svg).toHaveAttribute('data-icon', icon.toLowerCase());
+      expect(svg).toHaveAttribute('data-icon', icon);
     }
   });
 
   it('supports .size property', () => {
     const testId = randomText(8);
     const size = Math.floor(Math.random() * 128) + 1;
-    render(<ComponentToTest data-testid={testId} size={size} />);
+    render(<ComponentToTest data-testid={testId} icon="default" size={size} />);
     const svg = screen.getByTestId(testId);
     expect(svg).toHaveAttribute('size', String(size));
     expect(svg).toHaveAttribute('height', String(size));
@@ -56,7 +56,7 @@ describe('<AppIcon/> component', () => {
   it('supports .title property', () => {
     const testId = randomText(8);
     const title = randomText(16);
-    render(<ComponentToTest data-testid={testId} title={title} />);
+    render(<ComponentToTest data-testid={testId} icon="default" title={title} />);
     const svg = screen.getByTestId(testId);
     expect(svg).toBeDefined();
     expect(svg).toHaveAttribute('title', title);

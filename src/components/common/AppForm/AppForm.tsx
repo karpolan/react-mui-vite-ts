@@ -12,6 +12,7 @@ interface Props extends FormHTMLAttributes<HTMLFormElement> {
 const AppForm: FunctionComponent<Props> = ({ children, ...resOfProps }) => {
   return (
     <form {...resOfProps}>
+      {/* TODO: Refactor with MUI Grid v1 */}
       <Grid container direction="column" alignItems="center">
         <Box maxWidth="40rem" width="100%">
           {children}

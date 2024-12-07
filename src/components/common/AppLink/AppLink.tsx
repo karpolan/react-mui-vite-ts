@@ -1,8 +1,16 @@
 import { forwardRef, useMemo } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
-import MuiLink from '@mui/material/Link';
+import MuiLink, { LinkProps as MuiLinkProps } from '@mui/material/Link';
 import { APP_LINK_COLOR, APP_LINK_UNDERLINE } from '@/components/config';
-import { AppLinkProps, EXTERNAL_LINK_PROPS } from './utils';
+import { EXTERNAL_LINK_PROPS } from './utils';
+
+export interface AppLinkProps extends MuiLinkProps {
+  activeClassName?: string;
+  // children: ReactNode;
+  to?: string;
+  href?: string;
+  openInNewTab?: boolean;
+}
 
 /**
  * Restyled Link for navigation in the App, support internal links by "to" prop and external links by "href" prop
@@ -19,7 +27,7 @@ const AppLink = forwardRef<any, AppLinkProps>(
       activeClassName = 'active', // This class is applied to the Link component when the router.pathname matches the href/to prop
       children,
       color = APP_LINK_COLOR,
-      className: classNameProps,
+      className: customClassName,
       underline = APP_LINK_UNDERLINE,
       to,
       href,
@@ -30,11 +38,11 @@ const AppLink = forwardRef<any, AppLinkProps>(
   ) => {
     const location = useLocation();
     const currentPath = location.pathname;
-    const destination = to || href || ''; // Note: don't use ?? here!
+    const destination = to || href || ''; // Note: Don't use ?? here!!!
 
     const className = useMemo(
-      () => [classNameProps, destination == currentPath && activeClassName].filter(Boolean).join(' '),
-      [classNameProps, activeClassName, destination, currentPath]
+      () => [customClassName, destination == currentPath && activeClassName].filter(Boolean).join(' '),
+      [customClassName, activeClassName, destination, currentPath]
     );
 
     const isExternal = useMemo(
@@ -46,15 +54,14 @@ const AppLink = forwardRef<any, AppLinkProps>(
       [destination]
     );
 
-    // console.log('isExternal', isExternal, destination);
-
     const propsToRender = {
       className,
       color,
       underline, // 'hover' | 'always' | 'none'
-      ...((openInNewTab || (isExternal && openInNewTab !== false)) && EXTERNAL_LINK_PROPS),
+      ...((openInNewTab || (isExternal && openInNewTab !== false)) && EXTERNAL_LINK_PROPS), // Open external links in new tab
       ...restOfProps,
     };
+
     return isExternal ? (
       <MuiLink ref={ref} href={destination} {...propsToRender}>
         {children}
