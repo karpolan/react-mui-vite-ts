@@ -6,6 +6,8 @@ import { useDarkMode } from '@/hooks';
 import DARK_THEME from './dark';
 import LIGHT_THEME from './light';
 
+const COLOR_SCHEME_SELECTOR = 'class'; // Must be same in cssVariables and in <InitColorSchemeScript attribute="xxx" />
+
 function getThemeForLightAndDarkMode() {
   const themeForLightAndDarkWithCssVariables = createTheme({
     colorSchemes: {
@@ -13,7 +15,7 @@ function getThemeForLightAndDarkMode() {
       light: LIGHT_THEME,
     },
     cssVariables: {
-      colorSchemeSelector: 'class', // Must be same as <InitColorSchemeScript attribute="xxx" /> in the Layout
+      colorSchemeSelector: COLOR_SCHEME_SELECTOR,
     },
   });
   const responsiveTheme = responsiveFontSizes(themeForLightAndDarkWithCssVariables); // Make the Typography responsive
@@ -36,41 +38,14 @@ const ThemeProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
       theme={dualModeTheme}
       defaultMode={muiMode}
     >
-      <InitColorSchemeScript attribute="class" defaultMode={muiMode} />
-      <CssBaseline enableColorScheme />
+      <InitColorSchemeScript attribute={COLOR_SCHEME_SELECTOR} defaultMode={muiMode} />
+      <CssBaseline
+        // Note: Must be rendered inside the ThemeProvider, otherwise it won't work when the DarkMode changes
+        enableColorScheme
+      />
       {children}
     </MuiThemeProvider>
   );
 };
-
-/*
-MUI v5 version of the AppThemeProvider
-
-function getThemeByDarkMode(darkMode: boolean) {
-  return darkMode ? createTheme(DARK_THEME) : createTheme(LIGHT_THEME);
-}
-
-
-const AppThemeProviderV5: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const [loading, setLoading] = useState(true); // True until the component is mounted
-  const [state] = useAppStore();
-
-  useEffect(() => setLoading(false), []); // Set .loading to false when the component is mounted
-
-  const currentTheme = useMemo(
-    () => getThemeByDarkMode(state.darkMode),
-    [state.darkMode] // Observe AppStore and re-create the theme when .darkMode changes
-  );
-
-  if (loading) return null; // Don't render anything until the component is mounted
-
-  return (
-    <EmotionThemeProvider theme={currentTheme}>
-      <CssBaseline />
-      {children}
-    </EmotionThemeProvider>
-  );
-};
-*/
 
 export default ThemeProvider;
