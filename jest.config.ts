@@ -1,12 +1,13 @@
 import type { Config } from 'jest';
 
 const jestConfig: Config = {
+  // extensionsToTreatAsEsm: ['.ts', '.tsx'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
   },
-  // preset: 'ts-jest',
-  preset: 'ts-jest/presets/default-esm',
+  preset: 'ts-jest',
+  // preset: 'ts-jest/presets/default-esm',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
   transform: {
     '^.+\\.(ts|tsx)$': [
