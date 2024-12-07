@@ -1,4 +1,5 @@
-import { defineConfig } from 'vitest/config';
+// import { defineConfig, UserConfig } from 'vitest/config'; // Variant 1
+import { defineConfig, UserConfig } from 'vite'; // Variant 2
 import react from '@vitejs/plugin-react-swc';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
@@ -13,6 +14,7 @@ export default defineConfig({
     port: 3000,
   },
   test: {
+    // This is Vitest's configuration
     alias: {
       '@/': new URL('./src/', import.meta.url).pathname,
     },
@@ -21,4 +23,4 @@ export default defineConfig({
     globals: true,
     setupFiles: ['./setup-tests.ts'],
   },
-});
+} as UserConfig);

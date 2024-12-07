@@ -1,7 +1,7 @@
 {
   "type": "module",
   "name": "react-mui-vite-ts",
-  "version": "0.3.33",
+  "version": "0.4.37",
   "description": "Starter project for Vite with React + MUI using TypeScript",
   "author": {
     "name": "Anton Karpenko",
@@ -54,7 +54,7 @@
     "ts-node": "latest",
     "typescript": "^5",
     "typescript-eslint": "latest",
-    "vite": "^5",
+    "vite": "^6",
     "vite-tsconfig-paths": "latest",
     "vitest": "latest"
   }

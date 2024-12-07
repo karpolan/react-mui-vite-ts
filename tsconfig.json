@@ -6,6 +6,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "target": "ES2022",
     "types": ["vite/client" /* required to get import.meta working */, "@testing-library/jest-dom"]
   },
   "files": [],
