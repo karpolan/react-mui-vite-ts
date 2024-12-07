@@ -13,10 +13,10 @@ const DEFAULT_SX_VALUES = {
 
 export interface AppButtonProps extends Omit<MuiButtonProps, 'color' | 'endIcon' | 'startIcon'> {
   color?: string; // Not only 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
-  endIcon?: string | ReactNode;
+  endIcon?: IconName | ReactNode;
   label?: string; // Alternate to .text
   text?: string; // Alternate to .label
-  startIcon?: string | ReactNode;
+  startIcon?: IconName | ReactNode;
   // Missing props
   component?: ElementType; // Could be RouterLink, AppLink, <a>, etc.
   to?: string; // Link prop

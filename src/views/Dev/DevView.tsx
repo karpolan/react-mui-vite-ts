@@ -71,7 +71,7 @@ const DevView = () => {
         <Card>
           <CardHeader title="AppIconButton" />
           <CardContent>
-            <AppIconButton title="Default icon, no color specified" />
+            <AppIconButton icon="default" title="Default icon, no color specified" />
             <AppIconButton icon="close" color="primary" title="Close icon with Primary color" />
             <AppIconButton icon="menu" color="secondary" title="Menu icon with Secondary color" />
             <AppIconButton icon="settings" color="error" title="Settings icon with Error color" />
@@ -79,12 +79,12 @@ const DevView = () => {
             <AppIconButton icon="info" color="info" title="Info icon with Info color" />
             <AppIconButton icon="home" color="success" title="Home icon with Success color" />
             <AppIconButton
-              icon="visibilityoff"
+              icon="visibilityOff"
               color="#FF8C00"
               title="VisibilityOff icon with DarkOrange (#FF8C00) color"
             />
             <AppIconButton
-              icon="visibilityon"
+              icon="visibilityOn"
               color="rgb(50, 205, 50)"
               title="VisibilityOn icon with LimeGreen (rgb(50, 205, 50)) color"
             />
