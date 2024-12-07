@@ -3,9 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { Stack, StackProps } from '@mui/material';
 import { IS_DEBUG } from '@/config';
 import { AppIconButton, ErrorBoundary } from '@/components';
-import { useAppStore } from '@/store';
+import { useDarkMode, useIsMobile } from '@/hooks';
 import { LinkToPage } from '@/utils';
-import { useEventSwitchDarkMode, useIsMobile } from '@/hooks';
 import { TopBar } from './components';
 import SideBar, { SideBarProps } from './components/SideBar';
 import {
@@ -27,21 +26,20 @@ interface Props extends StackProps {
  * @layout TopBarAndSideBarLayout
  */
 const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarItems, title, variant }) => {
-  const [state] = useAppStore();
+  const isMobile = useIsMobile();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [sidebarVisible, setSidebarVisible] = useState(false); // TODO: Verify is default value is correct
-  const onMobile = useIsMobile();
-  const onSwitchDarkMode = useEventSwitchDarkMode();
 
   const sidebarProps = useMemo((): Partial<SideBarProps> => {
-    const anchor = onMobile ? SIDE_BAR_MOBILE_ANCHOR : SIDE_BAR_DESKTOP_ANCHOR;
+    const anchor = isMobile ? SIDE_BAR_MOBILE_ANCHOR : SIDE_BAR_DESKTOP_ANCHOR;
     let open = sidebarVisible;
     let sidebarVariant: SideBarProps['variant'] = 'temporary';
     switch (variant) {
       case 'sidebarAlwaysTemporary':
         break;
       case 'sidebarPersistentOnDesktop':
-        open = onMobile ? sidebarVisible : true;
-        sidebarVariant = onMobile ? 'temporary' : 'persistent';
+        open = isMobile ? sidebarVisible : true;
+        sidebarVariant = isMobile ? 'temporary' : 'persistent';
         break;
       case 'sidebarAlwaysPersistent':
         open = true;
@@ -49,12 +47,12 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarIte
         break;
     }
     return { anchor, open, variant: sidebarVariant };
-  }, [onMobile, sidebarVisible, variant]);
+  }, [isMobile, sidebarVisible, variant]);
 
   const stackStyles = useMemo(
     () => ({
       minHeight: '100vh', // Full screen height
-      paddingTop: onMobile ? TOP_BAR_MOBILE_HEIGHT : TOP_BAR_DESKTOP_HEIGHT,
+      paddingTop: isMobile ? TOP_BAR_MOBILE_HEIGHT : TOP_BAR_DESKTOP_HEIGHT,
       paddingLeft:
         sidebarProps.variant === 'persistent' && sidebarProps.open && sidebarProps?.anchor?.includes('left')
           ? SIDE_BAR_WIDTH
@@ -64,7 +62,7 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarIte
           ? SIDE_BAR_WIDTH
           : undefined,
     }),
-    [onMobile, sidebarProps]
+    [isMobile, sidebarProps]
   );
 
   const onSideBarOpen = () => {
@@ -86,10 +84,10 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarIte
 
   const DarkModeButton = (
     <AppIconButton
-      icon={state.darkMode ? 'day' : 'night'} // Variant 1
+      icon={isDarkMode ? 'day' : 'night'} // Variant 1
       // icon="daynight" // Variant 2
-      title={state.darkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
-      onClick={onSwitchDarkMode}
+      title={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}
+      onClick={toggleDarkMode}
     />
   );
 
@@ -99,9 +97,9 @@ const TopBarAndSideBarLayout: FunctionComponent<Props> = ({ children, sidebarIte
     : { startNode: DarkModeButton, endNode: LogoButton };
 
   IS_DEBUG &&
-    console.log('Render <TopbarAndSidebarLayout/>', {
-      onMobile,
-      darkMode: state.darkMode,
+    console.log('Re-render <TopBarAndSideBarLayout/>', {
+      isMobile,
+      isDarkMode,
       sidebarProps,
     });
 

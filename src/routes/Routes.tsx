@@ -14,7 +14,7 @@ const routesPublic = createBrowserRouter(PUBLIC_ROUTES);
  * @component Routes
  */
 const Routes = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); // True until the AuthWatchdog tells us if user is authenticated or not
   const [refreshCount, setRefreshCount] = useState(0);
   const isAuthenticated = useIsAuthenticated();
 
@@ -32,10 +32,10 @@ const Routes = () => {
   useAuthWatchdog(afterLogin, afterLogout);
 
   if (loading) {
-    return <AppLoading />;
+    return <AppLoading />; // Show loading spinner until we know if user is authenticated or not
   }
 
-  IS_DEBUG && console.log('Render <Routes/>', { isAuthenticated, refresh: refreshCount });
+  IS_DEBUG && console.log('Re-render <Routes/>', { isAuthenticated, refresh: refreshCount });
 
   return <RouterProvider router={isAuthenticated ? routesPrivate : routesPublic} />;
 };
