@@ -1,11 +1,12 @@
 import { Avatar, Stack, Typography } from '@mui/material';
 import { AppLink } from '@/components';
+import { CurrentUser } from '../../store/config';
 
 interface UserInfoProps {
   className?: string;
   showAvatar?: boolean;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  user?: any;
+  user?: CurrentUser | any;
 }
 
 /**
@@ -15,9 +16,9 @@ interface UserInfoProps {
  * @param {object} [user] - logged user data {name, email, avatar...}
  */
 const UserInfo = ({ showAvatar = false, user, ...restOfProps }: UserInfoProps) => {
-  const fullName = user?.name || [user?.nameFirst || '', user?.nameLast || ''].join(' ').trim();
-  const srcAvatar = user?.avatar ? user?.avatar : undefined;
-  const userPhoneOrEmail = user?.phone || (user?.email as string);
+  const fullName = user?.displayName || [user?.nameFirst || '', user?.nameLast || ''].join(' ').trim();
+  const srcAvatar = user?.avatarUrl ? user?.avatarUrl : undefined;
+  const userPhoneOrEmail = (user?.phone as string) || (user?.email as string);
 
   return (
     <Stack alignItems="center" minHeight="fit-content" marginBottom={2} {...restOfProps}>

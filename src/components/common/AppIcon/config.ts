@@ -28,10 +28,8 @@ export type IconName = keyof typeof ICONS;
 /**
  * How to use:
  * 1. Import all required React, MUI or other SVG icons into this file.
- * 2. Add icons with "unique lowercase names" into ICONS object. Lowercase is a must!
+ * 2. Add icons with "unique names" into ICONS object.
  * 3. Use icons everywhere in the App by their names in <Icon icon="xxx" /> component
- * Important: properties of ICONS object MUST be lowercase!
- * Note: You can use camelCase or UPPERCASE in the <Icon icon="someIconByName" /> component
  */
 export const ICONS /* Note: Setting type disables property autocomplete :( was - : Record<string, ComponentType> */ = {
   default: DefaultIcon,
@@ -39,9 +37,9 @@ export const ICONS /* Note: Setting type disables property autocomplete :( was -
   close: CloseIcon,
   menu: MenuIcon,
   settings: SettingsIcon,
-  visibilityon: VisibilityIcon,
-  visibilityoff: VisibilityOffIcon,
-  daynight: DayNightIcon,
+  visibilityOn: VisibilityIcon,
+  visibilityOff: VisibilityOffIcon,
+  dayNight: DayNightIcon,
   night: NightIcon,
   day: DayIcon,
   search: SearchIcon,

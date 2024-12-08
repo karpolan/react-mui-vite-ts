@@ -16,7 +16,9 @@ const NotFoundView = () => {
 
   return (
     <AppView>
-      <Typography variant="h3">Page not found!</Typography>
+      <Typography variant="h3" component="h1">
+        Page not found!
+      </Typography>
       <Typography variant="body1">
         Requested address is unknown, please check your URL or go to the <AppLink to="/">home page</AppLink>.
       </Typography>

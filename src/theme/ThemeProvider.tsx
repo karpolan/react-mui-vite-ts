@@ -1,38 +1,51 @@
-import { FunctionComponent, useMemo, PropsWithChildren, useState, useEffect } from 'react';
-import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
+import { FunctionComponent, useMemo, PropsWithChildren } from 'react';
+import InitColorSchemeScript from '@mui/material/InitColorSchemeScript';
 import { CssBaseline } from '@mui/material';
-import { createTheme } from '@mui/material/styles';
-import { useAppStore } from '@/store';
+import { createTheme, responsiveFontSizes, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import { useDarkMode } from '@/hooks';
 import DARK_THEME from './dark';
 import LIGHT_THEME from './light';
 
-function getThemeByDarkMode(darkMode: boolean) {
-  return darkMode ? createTheme(DARK_THEME) : createTheme(LIGHT_THEME);
+const COLOR_SCHEME_SELECTOR = 'class'; // Must be same in cssVariables and in <InitColorSchemeScript attribute="xxx" />
+
+function getThemeForLightAndDarkMode() {
+  const themeForLightAndDarkWithCssVariables = createTheme({
+    colorSchemes: {
+      dark: DARK_THEME,
+      light: LIGHT_THEME,
+    },
+    cssVariables: {
+      colorSchemeSelector: COLOR_SCHEME_SELECTOR,
+    },
+  });
+  const responsiveTheme = responsiveFontSizes(themeForLightAndDarkWithCssVariables); // Make the Typography responsive
+  return responsiveTheme;
 }
 
 /**
  * Renders everything needed to get MUI theme working
- * The Light or Dark themes applied depending on global .darkMode state
+ * The Light or Dark themes applied depending on .muiMode state
  */
-const AppThemeProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
-  const [loading, setLoading] = useState(true); // True until the component is mounted
-  const [state] = useAppStore();
+const ThemeProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
+  const { muiMode } = useDarkMode();
 
-  useEffect(() => setLoading(false), []); // Set .loading to false when the component is mounted
-
-  const currentTheme = useMemo(
-    () => getThemeByDarkMode(state.darkMode),
-    [state.darkMode] // Observe AppStore and re-create the theme when .darkMode changes
-  );
-
-  if (loading) return null; // Don't render anything until the component is mounted
+  const dualModeTheme = useMemo(() => getThemeForLightAndDarkMode(), []); // Create the theme only once
 
   return (
-    <EmotionThemeProvider theme={currentTheme}>
-      <CssBaseline /* MUI Styles */ />
+    <MuiThemeProvider
+      // disableTransitionOnChange // Uncomment this line if you need faster theme switching
+      noSsr // @see https://mui.com/material-ui/customization/dark-mode/#disable-double-rendering
+      theme={dualModeTheme}
+      defaultMode={muiMode}
+    >
+      <InitColorSchemeScript attribute={COLOR_SCHEME_SELECTOR} defaultMode={muiMode} />
+      <CssBaseline
+        // Note: Must be rendered inside the ThemeProvider, otherwise it won't work when the DarkMode changes
+        enableColorScheme
+      />
       {children}
-    </EmotionThemeProvider>
+    </MuiThemeProvider>
   );
 };
 
-export default AppThemeProvider;
+export default ThemeProvider;

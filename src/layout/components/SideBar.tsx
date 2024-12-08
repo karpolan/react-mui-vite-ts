@@ -1,8 +1,7 @@
 import { FunctionComponent, useCallback, MouseEvent } from 'react';
 import { Stack, Divider, Drawer, DrawerProps, FormControlLabel, Switch, Tooltip } from '@mui/material';
-import { useAppStore } from '@/store';
 import { LinkToPage } from '@/utils';
-import { useEventLogout, useEventSwitchDarkMode, useIsAuthenticated, useIsMobile } from '@/hooks';
+import { useDarkMode, useEventLogout, useIsAuthenticated, useIsMobile } from '@/hooks';
 import { AppIconButton, UserInfo } from '@/components';
 import { SIDE_BAR_WIDTH, TOP_BAR_DESKTOP_HEIGHT } from '../config';
 import SideBarNavList from './SideBarNavList';
@@ -21,15 +20,15 @@ export interface SideBarProps extends Pick<DrawerProps, 'anchor' | 'className' |
  * @param {function} onClose - called when the Drawer is closing
  */
 const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items, onClose, ...restOfProps }) => {
-  const [state] = useAppStore();
-  // const isAuthenticated = state.isAuthenticated; // Variant 1
-  const isAuthenticated = useIsAuthenticated(); // Variant 2
-  const onMobile = useIsMobile();
-
-  const onSwitchDarkMode = useEventSwitchDarkMode();
+  const isMobile = useIsMobile();
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const isAuthenticated = useIsAuthenticated();
   const onLogout = useEventLogout();
 
-  const handleAfterLinkClick = useCallback(
+  const isRenderedAsDrawer = variant === 'temporary';
+
+  // Hack to close the SideBar as a Drawer when the user clicks on the link
+  const closeSideBarAfterAnyClick = useCallback(
     (event: MouseEvent) => {
       if (variant === 'temporary' && typeof onClose === 'function') {
         onClose(event, 'backdropClick');
@@ -40,14 +39,16 @@ const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items
 
   return (
     <Drawer
+      aria-modal={isRenderedAsDrawer}
       anchor={anchor}
       open={open}
       variant={variant}
+      closeAfterTransition={isRenderedAsDrawer} // Solves "Blocked aria-hidden on an element..." error
       PaperProps={{
         sx: {
           width: SIDE_BAR_WIDTH,
-          marginTop: onMobile ? 0 : variant === 'temporary' ? 0 : TOP_BAR_DESKTOP_HEIGHT,
-          height: onMobile ? '100%' : variant === 'temporary' ? '100%' : `calc(100% - ${TOP_BAR_DESKTOP_HEIGHT})`,
+          marginTop: isMobile ? 0 : isRenderedAsDrawer ? 0 : TOP_BAR_DESKTOP_HEIGHT,
+          height: isMobile ? '100%' : isRenderedAsDrawer ? '100%' : `calc(100% - ${TOP_BAR_DESKTOP_HEIGHT})`,
         },
       }}
       onClose={onClose}
@@ -58,7 +59,7 @@ const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items
           padding: 2,
         }}
         {...restOfProps}
-        onClick={handleAfterLinkClick}
+        onClick={closeSideBarAfterAnyClick}
       >
         {isAuthenticated && (
           <>
@@ -80,10 +81,10 @@ const SideBar: FunctionComponent<SideBarProps> = ({ anchor, open, variant, items
             marginTop: 2,
           }}
         >
-          <Tooltip title={state.darkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}>
+          <Tooltip title={isDarkMode ? 'Switch to Light mode' : 'Switch to Dark mode'}>
             <FormControlLabel
-              label={!state.darkMode ? 'Light mode' : 'Dark mode'}
-              control={<Switch checked={state.darkMode} onChange={onSwitchDarkMode} />}
+              label={!isDarkMode ? 'Light mode' : 'Dark mode'}
+              control={<Switch checked={isDarkMode} onChange={toggleDarkMode} />}
             />
           </Tooltip>
 

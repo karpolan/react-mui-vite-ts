@@ -25,18 +25,20 @@ const TopBar: FunctionComponent<Props> = ({ endNode, startNode, title = '', ...r
       <Toolbar disableGutters sx={{ paddingX: 1 }}>
         {startNode}
 
+        {/* Note: We need to render some content in the Toolbar even when the .title is empty, 
+        because it's required for the layout to work properly. */}
         <Typography
-          variant="h6"
+          component="strong" // For SEO
           sx={{
             marginX: 1,
             flexGrow: 1,
             textAlign: 'center',
             whiteSpace: 'nowrap',
           }}
+          variant="h6"
         >
           {title}
         </Typography>
-
         {endNode}
       </Toolbar>
     </AppBar>

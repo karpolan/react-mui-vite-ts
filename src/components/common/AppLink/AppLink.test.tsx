@@ -1,8 +1,8 @@
 import { MemoryRouter } from 'react-router-dom';
 import { FunctionComponent } from 'react';
 import { render, screen } from '@testing-library/react';
-import AppLink, { AppLinkProps } from '.';
 import { randomColor, capitalize } from '@/utils/text';
+import AppLink, { AppLinkProps } from './AppLink';
 
 /**
  * AppLink wrapped with BrowserRouter

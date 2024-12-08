@@ -27,7 +27,7 @@ export const useAppStore = (): AppContextReturningType => useContext(AppStoreCon
  * export default withAppStore(MyComponent)
  */
 interface WithAppStoreProps {
-  store: object;
+  store: AppContextReturningType;
 }
 export const withAppStore =
   (Component: ComponentType<WithAppStoreProps>): FunctionComponent =>
