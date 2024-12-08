@@ -1,7 +1,7 @@
 import { FunctionComponent, PropsWithChildren } from 'react';
 import { Stack, StackProps } from '@mui/material';
 import { CONTENT_MAX_WIDTH, CONTENT_MIN_WIDTH } from '@/components/config';
-import { useIsMobile } from '../../../hooks';
+import { useIsMobile } from '@/hooks';
 
 /**
  * Renders View container composition with limited width

@@ -25,6 +25,7 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "copy-to-clipboard": "latest",
     "react": "^18",
     "react-dom": "^18",
     "react-router-dom": "latest"

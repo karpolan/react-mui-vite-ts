@@ -9,7 +9,9 @@ import { AppLink, AppView } from '@/components';
 const WelcomeView = () => {
   return (
     <AppView>
-      <Typography variant="h4">Welcome to React App with MUI</Typography>
+      <Typography variant="h4" component="h1">
+        Welcome to React App with MUI
+      </Typography>
 
       <div>This is Welcome page, put your content here....</div>
       <div>
