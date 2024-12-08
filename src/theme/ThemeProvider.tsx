@@ -24,7 +24,7 @@ function getThemeForLightAndDarkMode() {
 
 /**
  * Renders everything needed to get MUI theme working
- * The Light or Dark themes applied depending on global .darkMode state
+ * The Light or Dark themes applied depending on .muiMode state
  */
 const ThemeProvider: FunctionComponent<PropsWithChildren> = ({ children }) => {
   const { muiMode } = useDarkMode();
