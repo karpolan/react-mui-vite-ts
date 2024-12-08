@@ -138,11 +138,11 @@ const DemoDialogs = () => {
         <CardHeader title="Dialogs" />
         <CardContent>
           <Stack alignItems="center">
-            <AppButton size="small" label="Simple Message" color="default" onClick={onMessageDialogOpen} />
-            <AppButton size="small" label="Confirmation Dialog" color="primary" onClick={onConfirmDialogOpen} />
+            <AppButton size="small" children="Simple Message" color="default" onClick={onMessageDialogOpen} />
+            <AppButton size="small" children="Confirmation Dialog" color="primary" onClick={onConfirmDialogOpen} />
             <AppButton
               size="small"
-              label="Edit Email - Composition Dialog"
+              children="Edit Email - Composition Dialog"
               color="secondary"
               onClick={onEditEmailDialogOpen}
             />

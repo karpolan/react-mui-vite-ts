@@ -83,27 +83,9 @@ describe('<AppButton/> component', () => {
     expect(button).toHaveClass(className);
   });
 
-  it('supports .label property', () => {
-    let text = 'button with label';
-    render(<ComponentToTest label={text} />);
-    let span = screen.getByText(text);
-    expect(span).toBeDefined();
-    let button = span.closest('button'); // parent <button> element
-    expect(button).toBeDefined();
-  });
-
-  it('supports .text property', () => {
-    let text = 'button with text';
-    render(<ComponentToTest text={text} />);
-    let span = screen.getByText(text);
-    expect(span).toBeDefined();
-    let button = span.closest('button'); // parent <button> element
-    expect(button).toBeDefined();
-  });
-
   it('supports .startIcon property as <svg/>', () => {
     let text = 'button with start icon';
-    render(<ComponentToTest text={text} startIcon={<DefaultIcon data-testid="startIcon" />} />);
+    render(<ComponentToTest children={text} startIcon={<DefaultIcon data-testid="startIcon" />} />);
     let button = screen.getByText(text);
     let icon = within(button).getByTestId('startIcon');
     expect(icon).toBeDefined();
@@ -113,7 +95,7 @@ describe('<AppButton/> component', () => {
 
   it('supports .endIcon property', () => {
     let text = 'button with end icon as <svg/>';
-    render(<ComponentToTest text={text} endIcon={<DefaultIcon data-testid="endIcon" />} />);
+    render(<ComponentToTest children={text} endIcon={<DefaultIcon data-testid="endIcon" />} />);
     let button = screen.getByText(text);
     let icon = within(button).getByTestId('endIcon');
     expect(icon).toBeDefined();
@@ -123,7 +105,7 @@ describe('<AppButton/> component', () => {
 
   it('supports .startIcon property as string', () => {
     let text = 'button with start icon';
-    render(<ComponentToTest text={text} startIcon="default" />);
+    render(<ComponentToTest children={text} startIcon="default" />);
     let button = screen.getByText(text);
     let icon = within(button).getByTestId('MoreHorizIcon'); //Note: this is valid only when "default" icon is <MoreHorizIcon />
     expect(icon).toBeDefined();
@@ -133,7 +115,7 @@ describe('<AppButton/> component', () => {
 
   it('supports .endIcon property', () => {
     let text = 'button with end icon as string';
-    render(<ComponentToTest text={text} endIcon="default" />);
+    render(<ComponentToTest children={text} endIcon="default" />);
     let button = screen.getByText(text);
     let icon = within(button).getByTestId('MoreHorizIcon'); //Note: this is valid only when "default" icon is <MoreHorizIcon />
     expect(icon).toBeDefined();

@@ -58,9 +58,9 @@ const DemoLinks = () => {
           </Stack>
 
           <Stack alignItems="center">
-            <AppButton to="/" size="small" label="as Default Button" />
-            <AppButton to="/" size="small" color="primary" label="as Primary Button" />
-            <AppButton to="/" size="small" color="secondary" label="as Secondary Button" />
+            <AppButton to="/" size="small" children="as Default Button" />
+            <AppButton to="/" size="small" color="primary" children="as Primary Button" />
+            <AppButton to="/" size="small" color="secondary" children="as Secondary Button" />
           </Stack>
         </Stack>
       </CardContent>
