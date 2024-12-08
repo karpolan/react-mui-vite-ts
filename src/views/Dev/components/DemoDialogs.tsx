@@ -96,10 +96,10 @@ const DemoDialogs = () => {
     );
   };
 
-  const onEditEmailDialogClose = useCallback(() => {
+  const onEditEmailDialogClose = () => {
     console.info('onEditEmailDialogClose() - email:', email);
     setOpenEmailDialog(false);
-  }, []);
+  };
 
   const onEmailChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
