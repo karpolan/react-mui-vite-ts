@@ -14,8 +14,6 @@ const DEFAULT_SX_VALUES = {
 export interface AppButtonProps extends Omit<MuiButtonProps, 'color' | 'endIcon' | 'startIcon'> {
   color?: string; // Not only 'inherit' | 'primary' | 'secondary' | 'success' | 'error' | 'info' | 'warning',
   endIcon?: IconName | ReactNode;
-  label?: string; // Alternate to .text
-  text?: string; // Alternate to .label
   startIcon?: IconName | ReactNode;
   // Missing props
   component?: ElementType; // Could be RouterLink, AppLink, <a>, etc.
@@ -32,11 +30,9 @@ export interface AppButtonProps extends Omit<MuiButtonProps, 'color' | 'endIcon'
  * @param {string} [children] - content to render, overrides .label and .text props
  * @param {string | ReactNode} [endIcon] - name of AppIcon or ReactNode to show after the button label
  * @param {string} [href] - external link URI
- * @param {string} [label] - text to render, alternate to .text
  * @param {boolean} [openInNewTab] - link will be opened in new tab when true
  * @param {string | ReactNode} [startIcon] - name of AppIcon or ReactNode to show before the button label
  * @param {Array<func| object| bool> | func | object} [sx] - additional CSS styles to apply to the button
- * @param {string} [text] - text to render, alternate to .label
  * @param {string} [to] - internal link URI
  * @param {string} [underline] - controls underline style when button used as link, one of 'none', 'hover', or 'always'
  * @param {string} [variant] - MUI variant of the button, one of 'text', 'outlined', or 'contained'
@@ -46,10 +42,8 @@ const AppButton: FunctionComponent<AppButtonProps> = ({
   color: customColor = 'inherit',
   component: customComponent,
   endIcon,
-  label,
   startIcon,
   sx: customSx,
-  text,
   underline = 'none',
   variant = APP_BUTTON_VARIANT,
   ...restOfProps
@@ -91,7 +85,7 @@ const AppButton: FunctionComponent<AppButtonProps> = ({
       variant={variant}
       {...propsToRender}
     >
-      {children || label || text}
+      {children}
     </MuiButton>
   );
 };
