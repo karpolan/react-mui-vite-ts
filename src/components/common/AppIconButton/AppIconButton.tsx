@@ -51,8 +51,8 @@ const AppIconButton: FunctionComponent<AppIconButtonProps> = ({
 }) => {
   const componentToRender =
     !component && (restOfProps?.href || restOfProps?.to)
-      ? AppLink // Use AppLink when href or to is set
-      : (component ?? MuiIconButton); // Use MuiIconButton when component is not set
+      ? AppLink // Use AppLink when .href or .to properties are set
+      : (component ?? MuiIconButton); // Use MuiIconButton when .component is not set
 
   const isMuiColor = useMemo(() => MUI_ICON_BUTTON_COLORS.includes(color), [color]);
 
