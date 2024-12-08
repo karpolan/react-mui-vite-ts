@@ -1,5 +1,4 @@
 import { Reducer } from 'react';
-import { localStorageSet } from '@/utils';
 import { AppStoreState, CurrentUser } from './config';
 
 type SupportedPayload = undefined | boolean | CurrentUser;
@@ -38,14 +37,15 @@ const AppStoreReducer: Reducer<AppStoreState, AppStoreAction> = (state, action) 
         currentUser: undefined, // Also reset previously logged User data
       };
 
-    case 'DARK_MODE': {
-      const darkMode = Boolean(action?.payload);
-      localStorageSet('darkMode', darkMode); // Also save the User selected value into the LocalStorage
-      return {
-        ...state,
-        darkMode,
-      };
-    }
+    // MUI v6 has own Dark Mode implementation, so we can remove this
+    // case 'DARK_MODE': {
+    //   const darkMode = Boolean(action?.payload);
+    //   localStorageSet('darkMode', darkMode); // Also save the User selected value into the LocalStorage
+    //   return {
+    //     ...state,
+    //     darkMode,
+    //   };
+    // }
     default:
       return state;
   }

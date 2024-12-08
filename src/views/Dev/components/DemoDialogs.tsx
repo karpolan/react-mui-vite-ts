@@ -1,5 +1,6 @@
+'use client';
 import { ChangeEvent, useState, ReactNode, useCallback } from 'react';
-import { Card, CardHeader, Grid, TextField } from '@mui/material';
+import { Card, CardContent, CardHeader, Stack, TextField } from '@mui/material';
 import { AppButton, AppIconButton } from '@/components';
 import {
   CommonDialog as MessageDialog,
@@ -8,9 +9,10 @@ import {
 } from '@/components/dialogs';
 
 /**
- * Renders demo section for Dialogs
+ * Renders "Demo Section" Dialogs and Popups
+ * @component DemoDialogs
  */
-const DialogsSection = () => {
+const DemoDialogs = () => {
   const [modal, setModal] = useState<ReactNode | null>(null);
   const [openEmailDialog, setOpenEmailDialog] = useState(false);
   const [email, setEmail] = useState('i@karpolan.com');
@@ -61,7 +63,7 @@ const DialogsSection = () => {
           <>
             <div>JSX content can be easily added into the dialog via props.body</div>
             <br />
-            <AppIconButton title="Default icon, no color specified" />
+            <AppIconButton icon="default" title="Default icon, no color specified" />
             <AppIconButton icon="close" color="primary" title="Close icon with Primary color" />
             <AppIconButton icon="menu" color="secondary" title="Menu icon with Secondary color" />
             <AppIconButton icon="settings" color="error" title="Settings icon with Error color" />
@@ -69,12 +71,12 @@ const DialogsSection = () => {
             <AppIconButton icon="info" color="info" title="Info icon with Info color" />
             <AppIconButton icon="home" color="success" title="Home icon with Success color" />
             <AppIconButton
-              icon="visibilityoff"
+              icon="visibilityOff"
               color="#FF8C00"
               title="VisibilityOff icon with DarkOrange (#FF8C00) color"
             />
             <AppIconButton
-              icon="visibilityon"
+              icon="visibilityOn"
               color="rgb(50, 205, 50)"
               title="VisibilityOn icon with LimeGreen (rgb(50, 205, 50)) color"
             />
@@ -134,20 +136,21 @@ const DialogsSection = () => {
 
       <Card>
         <CardHeader title="Dialogs" />
-        <Grid container direction="column" alignItems="center">
-          <AppButton size="small" label="Simple Message" color="default" onClick={onMessageDialogOpen} />
-          <AppButton size="small" label="Confirmation Dialog" color="primary" onClick={onConfirmDialogOpen} />
-          <AppButton
-            size="small"
-            label="Edit Email - Composition Dialog"
-            color="secondary"
-            onClick={onEditEmailDialogOpen}
-          />
-          <br />
-        </Grid>
+        <CardContent>
+          <Stack alignItems="center">
+            <AppButton size="small" children="Simple Message" color="default" onClick={onMessageDialogOpen} />
+            <AppButton size="small" children="Confirmation Dialog" color="primary" onClick={onConfirmDialogOpen} />
+            <AppButton
+              size="small"
+              children="Edit Email - Composition Dialog"
+              color="secondary"
+              onClick={onEditEmailDialogOpen}
+            />
+          </Stack>
+        </CardContent>
       </Card>
     </>
   );
 };
 
-export default DialogsSection;
+export default DemoDialogs;

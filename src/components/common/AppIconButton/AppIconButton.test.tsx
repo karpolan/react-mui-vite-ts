@@ -19,7 +19,7 @@ function randomPropertyName(obj: object): string {
 describe('<AppIconButton/> component', () => {
   it('renders itself', () => {
     const testId = randomText(8);
-    render(<ComponentToTest data-testid={testId} />);
+    render(<ComponentToTest data-testid={testId} icon="default" />);
 
     // Button
     const button = screen.getByTestId(testId);
@@ -40,7 +40,7 @@ describe('<AppIconButton/> component', () => {
     for (const color of [...MUI_ICON_BUTTON_COLORS, randomColor(), randomColor(), randomColor()]) {
       const testId = randomText(8);
       const icon = randomPropertyName(ICONS) as string;
-      render(<ComponentToTest data-testid={testId} color={color} icon={icon} />);
+      render(<ComponentToTest data-testid={testId} color={color} icon={icon as IconName} />);
 
       // Button
       const button = screen.getByTestId(testId);
@@ -60,7 +60,7 @@ describe('<AppIconButton/> component', () => {
 
   it('supports .disable property', () => {
     const testId = randomText(8);
-    render(<ComponentToTest data-testid={testId} disabled />);
+    render(<ComponentToTest data-testid={testId} disabled icon="default" />);
 
     // Button
     const button = screen.getByTestId(testId);
@@ -82,7 +82,7 @@ describe('<AppIconButton/> component', () => {
       // Icon
       const svg = button.querySelector('svg');
       expect(button).toBeDefined();
-      expect(svg).toHaveAttribute('data-icon', icon.toLowerCase());
+      expect(svg).toHaveAttribute('data-icon', icon);
     }
   });
 
@@ -90,7 +90,7 @@ describe('<AppIconButton/> component', () => {
     const sizes = ['small', 'medium', 'large'] as const; //  as IconButtonProps['size'][];
     for (const size of sizes) {
       const testId = randomText(8);
-      render(<ComponentToTest data-testid={testId} size={size} />);
+      render(<ComponentToTest data-testid={testId} icon="default" size={size} />);
 
       // Button
       const button = screen.getByTestId(testId);
@@ -102,7 +102,7 @@ describe('<AppIconButton/> component', () => {
   it('supports .title property', async () => {
     const testId = randomText(8);
     const title = randomText(16);
-    render(<ComponentToTest data-testid={testId} title={title} />);
+    render(<ComponentToTest data-testid={testId} icon="default" title={title} />);
 
     // Button
     const button = screen.getByTestId(testId);

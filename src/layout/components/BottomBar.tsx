@@ -30,7 +30,12 @@ const BottomBar: FunctionComponent<Props> = ({ items }) => {
       onChange={onNavigationChange}
     >
       {items.map(({ title, path, icon }) => (
-        <BottomNavigationAction key={`${title}-${path}`} label={title} value={path} icon={<AppIcon icon={icon} />} />
+        <BottomNavigationAction
+          key={`${title}-${path}`}
+          label={title}
+          value={path}
+          icon={icon && <AppIcon icon={icon} />}
+        />
       ))}
     </BottomNavigation>
   );

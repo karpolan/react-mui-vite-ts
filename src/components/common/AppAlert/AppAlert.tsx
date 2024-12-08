@@ -1,12 +1,11 @@
-import { FunctionComponent } from 'react';
-import MuiAlert, { AlertProps as MuiAlertProps } from '@mui/material/Alert';
+import MuiAlert from '@mui/material/Alert';
 import { APP_ALERT_SEVERITY, APP_ALERT_VARIANT } from '@/components/config';
 
 /**
  * Application styled Alert component
  * @component AppAlert
  */
-const AppAlert: FunctionComponent<MuiAlertProps> = ({
+const AppAlert: typeof MuiAlert = ({
   severity = APP_ALERT_SEVERITY,
   variant = APP_ALERT_VARIANT,
   onClose,

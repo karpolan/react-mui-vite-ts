@@ -44,7 +44,7 @@ Checks the code for errors and missing things
 
 ### `npm run format`
 
-Formats the code according to `./prettierrc.js` config
+Formats the code according to `./prettier.config.mjs` config
 
 ### `npm test`
 
