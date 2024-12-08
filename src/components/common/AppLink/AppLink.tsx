@@ -6,7 +6,6 @@ import { EXTERNAL_LINK_PROPS } from './utils';
 
 export interface AppLinkProps extends MuiLinkProps {
   activeClassName?: string;
-  // children: ReactNode;
   to?: string;
   href?: string;
   openInNewTab?: boolean;
