@@ -1,7 +1,7 @@
-import { ThemeProvider } from '@/theme';
-import StoreProvider from '@/store';
 import { ErrorBoundary } from '@/components';
 import Routes from '@/routes';
+import StoreProvider from '@/store';
+import { ThemeProvider } from '@/theme';
 
 /**
  * Root Application Component

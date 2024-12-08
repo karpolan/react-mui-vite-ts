@@ -96,8 +96,8 @@ const DemoDialogs = () => {
     );
   };
 
-  const onEditEmailDialogClose = useCallback((data: unknown) => {
-    console.info('onEditEmailDialogClose() - data:', data);
+  const onEditEmailDialogClose = useCallback(() => {
+    console.info('onEditEmailDialogClose() - email:', email);
     setOpenEmailDialog(false);
   }, []);
 
