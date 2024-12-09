@@ -6,7 +6,7 @@ and utilities to build professional React application faster.
 - [Source Code](https://github.com/karpolan/react-mui-vite-ts)
 - [Online Demo](https://react-mui-vite-ts.netlify.app)
 
-Inclides:
+Includes:
 
 - **Prettier** for code formatting
 - **Eslint** for error checking
@@ -15,7 +15,7 @@ Inclides:
 - State management using **Context API**
 - Different and customized **Public** and **Private** layouts
 - Basic **authentication** hooks and events
-- **Dark** and **Light** mode with switch
+- **Dark** and **Light** mode with a toggle
 - FavIcon and Manifest for **PWA**
 
 ## How to use
